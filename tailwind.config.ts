@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        mainfont: ['var(--font-spotlight)'],
+      },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
