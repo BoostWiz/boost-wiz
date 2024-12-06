@@ -1,0 +1,32 @@
+# Node.js 모듈 폴더
+node_modules/
+
+# 빌드 출력물
+build/
+dist/
+
+# 환경설정 파일
+.env
+.env.local
+.env.*.local
+
+# 로그 파일
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ESLint, Prettier 등의 설정 파일
+.eslintcache
+
+# 프로젝트에 포함되지 않는 IDE 관련 설정
+.vscode/
+.idea/
+
+# 테스트 커버리지
+coverage/
+
+# 정적 파일이 있는 폴더
+public/
+
+# TypeScript 빌드 출력물
+*.d.ts
