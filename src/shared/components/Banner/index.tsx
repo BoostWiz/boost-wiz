@@ -17,7 +17,11 @@ const Banner = ({ title, description, navList }: BannerProps) => {
         <h1 className="text-title text-white">{title}</h1>
         <span className="text-charcoal text-sm">{description}</span>
       </div>
-      {navList && <div className="mt-auto">{navList}</div>}
+      {navList && (
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+          {navList}
+        </div>
+      )}
     </div>
   );
 };
