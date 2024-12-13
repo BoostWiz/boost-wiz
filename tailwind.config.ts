@@ -26,6 +26,7 @@ export default {
         primary: '#EA0101',
         darkBrown: '#231F20',
         charcoal: '#35383E',
+        gray: '#999999',
         lightGray: '#ECEEF2',
         slateGray: '#717781',
         turquoise: '#0098AF',
@@ -36,6 +37,7 @@ export default {
         nearBlack: '#010101',
         charcoalBlack: '#111111',
         jetBlack: '#171717',
+        white: '#FFFFFF',
       },
       borderRadius: {
         lg: 'var(--radius)',
