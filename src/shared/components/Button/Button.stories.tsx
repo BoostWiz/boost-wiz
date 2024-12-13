@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
-import { Button } from './Button';
+import { Button } from '.';
 
 const meta = {
   title: 'Button',
@@ -18,17 +18,22 @@ const meta = {
     },
     variant: {
       control: { type: 'select' },
-      options: ['activate', 'cancel', 'not-activate'],
+      options: ['default', 'active', 'disabled', 'cancel', 'outline'],
       description: '버튼 스타일 색상 (배경, 텍스트 색상, 호버시 색상)',
     },
-    size: {
+    rounded: {
       control: { type: 'select' },
-      options: ['activate', 'sm', 'lg', 'icon'],
-      description: '버튼의 size + border radius',
+      options: ['small', 'medium', 'hard'],
+      description: 'border-radius 입니다.',
+    },
+    height: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
+      description: '버튼의 height',
     },
     children: {
       control: 'text',
-      description: '버튼 텍스트가 올 수도 있고, 이미지가 올 수도 있습니다.',
+      description: '텍스트가 올 수 있수도 있으며 컴포넌트가 올 수 있습니다.',
       defaultValue: 'Button',
     },
     asChild: {
@@ -48,16 +53,34 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    variant: 'activate',
-    size: 'activate',
-    children: '삭제 버튼',
+    variant: 'default',
+    height: 'sm',
+    children: <span className="text-xs">Default</span>,
+  },
+};
+
+export const DisabledButton: Story = {
+  args: {
+    variant: 'disabled',
+    height: 'md',
+    children: <span className="text-xs">Disabled</span>,
   },
 };
 
 export const LargeButton: Story = {
   args: {
-    variant: 'not-activate',
-    size: 'lg',
-    children: '라지 버튼',
+    variant: 'active',
+    height: 'lg',
+    rounded: 'hard',
+    children: <span className="text-md">Large</span>,
+  },
+};
+
+export const CustomButton: Story = {
+  args: {
+    variant: 'default',
+    height: 'md',
+    children: <span className="text-xs">Custom</span>,
+    className: 'bg-turquoise',
   },
 };
