@@ -9,20 +9,27 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        activate: 'bg-crimsonRed text-white hover:bg-crimsonRed/90',
-        cancel: 'bg-slateGray text-cancel hover:bg-slateGray/90',
-        'not-activate': 'bg-charcoal text-white hover:bg-charcoal/90',
+        default: 'bg-black text-white text-center hover:bg-black/90',
+        active: 'bg-primary text-white text-center hover:bg-primary/90',
+        disabled: 'bg-slateGray text-center hover:bg-slateGray/90',
+        cancel: 'bg-gray text-white text-center hover:bg-gray/90',
+        outline: 'border border-[0.5px] border-gray text-black text-center',
       },
-      size: {
-        activate: 'h-8 px-8 rounded-sm text-[10px]',
-        sm: 'h-6 px-3 rounded-sm',
-        lg: 'w-full h-12 px-8 rounded-md',
-        icon: 'h-9 w-9',
+      rounded: {
+        small: 'rounded-sm',
+        medium: 'rounded-md',
+        hard: 'rounded-lg',
+      },
+      height: {
+        sm: 'h-6 px-3',
+        md: 'h-8 px-4',
+        lg: 'w-full h-12 px-6',
       },
     },
     defaultVariants: {
-      variant: 'activate',
-      size: 'activate',
+      variant: 'default',
+      rounded: 'medium',
+      height: 'md',
     },
   },
 );
@@ -34,11 +41,11 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, rounded, height, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, rounded, height, className }))}
         ref={ref}
         {...props}
       />
