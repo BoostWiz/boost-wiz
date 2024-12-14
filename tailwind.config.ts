@@ -10,9 +10,6 @@ export default {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        banner: "url('/common/banner.png')",
-      },
       fontFamily: {
         mainfont: ['var(--font-spotlight)'],
       },

@@ -21,6 +21,10 @@ const meta = {
       control: 'text',
       description: 'description은 필수값 입니다.',
     },
+    bgUrl: {
+      control: 'text',
+      description: 'bgUrl은 옵셔널 입니다.',
+    },
     navList: {
       control: false,
       description: 'navList는 통째로 component 형태로 받습니다.',
@@ -35,6 +39,14 @@ export const Default: Story = {
   args: {
     title: 'kt wiz는?',
     description: '한국 프로야구의 ‘10번째 심장’ kt wiz를 소개합니다!',
+  },
+};
+
+export const WithBgUrl: Story = {
+  args: {
+    title: 'kt wiz는?',
+    description: '한국 프로야구의 ‘10번째 심장’ kt wiz를 소개합니다!',
+    bgUrl: '/common/sample.jpg',
   },
 };
 
