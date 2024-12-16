@@ -5,9 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../Button';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const [isHover, setIsHover] = useState(false);
+  const pathname = usePathname();
 
   const navData = [
     {
@@ -78,7 +80,7 @@ const Header = () => {
     setIsHover(false);
   };
 
-  const defaultCSS = {
+  const homeCss = {
     header: 'bg-transparent hover:text-black',
     logo: '/common/white_logo.svg',
     nav: 'text-white',
@@ -87,7 +89,7 @@ const Header = () => {
     liItem: '',
   };
 
-  const HoverCSS = {
+  const hoverCss = {
     header: 'hover:bg-white',
     logo: '/common/black_logo.svg',
     nav: 'text-black',
@@ -97,15 +99,21 @@ const Header = () => {
   };
 
   // TODO: Scroll은 Ref로 특정 페이지에 달아줘서 제어해줘야 한다.
-  const ScrollCSS = {
+  const bgBlackCss = {
     header: 'bg-black hover:text-white',
-    nav: '',
+    logo: '/common/white_logo.svg',
+    nav: 'text-white',
+    button: 'group-hover:bg-white',
+    text: 'group-hover:text-black',
+    liItem: 'hover:font-bold',
   };
+
+  const currentCSS = pathname === '/' ? homeCss : bgBlackCss;
 
   return (
     <header
       className={`${
-        isHover ? HoverCSS['header'] : defaultCSS['header']
+        isHover ? hoverCss['header'] : currentCSS['header']
       } fixed top-0 w-full group  transition-colors duration-300 cursor-pointer`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -115,7 +123,7 @@ const Header = () => {
       >
         <Link href="/">
           <Image
-            src={isHover ? HoverCSS['logo'] : defaultCSS['logo']}
+            src={isHover ? hoverCss['logo'] : currentCSS['logo']}
             alt="ktwiz white logo"
             width={100}
             height={100}
@@ -129,7 +137,7 @@ const Header = () => {
                 <li
                   id={nav.id}
                   className={`${
-                    isHover ? HoverCSS['nav'] : defaultCSS['nav']
+                    isHover ? hoverCss['nav'] : currentCSS['nav']
                   } w-[90px] text-center font-bold transition-colors duration-300`}
                 >
                   {nav.text}
@@ -142,11 +150,11 @@ const Header = () => {
           <Link href="/signup">
             <Button
               className={`${
-                isHover ? HoverCSS['button'] : defaultCSS['button']
+                isHover ? hoverCss['button'] : currentCSS['button']
               } transition-colors duration-300`}
             >
               <span
-                className={`${isHover ? HoverCSS['text'] : defaultCSS['text']}`}
+                className={`${isHover ? hoverCss['text'] : currentCSS['text']}`}
               >
                 회원가입
               </span>
@@ -155,11 +163,11 @@ const Header = () => {
           <Link href="/login">
             <Button
               className={`${
-                isHover ? HoverCSS['button'] : defaultCSS['button']
+                isHover ? hoverCss['button'] : currentCSS['button']
               } transition-colors duration-300`}
             >
               <span
-                className={`${isHover ? HoverCSS['text'] : defaultCSS['text']}`}
+                className={`${isHover ? hoverCss['text'] : currentCSS['text']}`}
               >
                 로그인
               </span>
@@ -173,17 +181,19 @@ const Header = () => {
             return (
               <ul
                 key={nav.id}
-                className={`${flexColumn} gap-2 w-[160px] py-4 text-center border-l-[1px] border-lightGray`}
+                className={`${flexColumn} gap-2 w-[158px] py-4 text-center border-l-[1px] border-lightGray`}
               >
                 {nav.items.map((item) => {
                   return (
                     <li
                       key={item.id}
                       className={`${
-                        isHover ? HoverCSS['liItem'] : defaultCSS['liItem']
+                        isHover ? hoverCss['liItem'] : currentCSS['liItem']
                       }`}
                     >
-                      <Link href={item.router}>{item.text}</Link>
+                      <Link href={item.router} className="text-black">
+                        {item.text}
+                      </Link>
                     </li>
                   );
                 })}
