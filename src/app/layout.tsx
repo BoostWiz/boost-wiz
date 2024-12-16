@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import '@/styles/globals.css';
 import QueryProvider from '@/app/provider/QueryProvider';
 import MswProvider from '@/app/provider/MSWProvider';
+import Footer from '@/shared/components/Footer';
 
 const mainFont = localFont({
   src: '../styles/fonts/Y-Spotlight.otf',
@@ -20,6 +21,7 @@ export default function RootLayout({
         <QueryProvider>
           <body className={`${mainFont.variable} font-mainfont`}>
             {children}
+            <Footer />
           </body>
         </QueryProvider>
       </MswProvider>
