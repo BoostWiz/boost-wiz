@@ -78,9 +78,35 @@ const Header = () => {
     setIsHover(false);
   };
 
+  const defaultCSS = {
+    header: 'bg-transparent hover:text-black',
+    logo: '/common/white_logo.svg',
+    nav: 'text-white',
+    button: 'bg-white',
+    text: 'text-black',
+    liItem: '',
+  };
+
+  const HoverCSS = {
+    header: 'hover:bg-white',
+    logo: '/common/black_logo.svg',
+    nav: 'text-black',
+    button: 'group-hover:bg-black',
+    text: 'group-hover:text-white',
+    liItem: 'hover:font-bold',
+  };
+
+  // TODO: Scroll은 Ref로 특정 페이지에 달아줘서 제어해줘야 한다.
+  const ScrollCSS = {
+    header: 'bg-black hover:text-white',
+    nav: '',
+  };
+
   return (
     <header
-      className="fixed top-0 w-full bg-transparent group hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer"
+      className={`${
+        isHover ? HoverCSS['header'] : defaultCSS['header']
+      } fixed top-0 w-full group  transition-colors duration-300 cursor-pointer`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -89,7 +115,7 @@ const Header = () => {
       >
         <Link href="/">
           <Image
-            src={isHover ? '/common/black_logo.svg' : '/common/white_logo.svg'}
+            src={isHover ? HoverCSS['logo'] : defaultCSS['logo']}
             alt="ktwiz white logo"
             width={100}
             height={100}
@@ -102,7 +128,9 @@ const Header = () => {
               return (
                 <li
                   id={nav.id}
-                  className="w-[90px] text-center text-white font-bold group-hover:text-black transition-colors duration-300"
+                  className={`${
+                    isHover ? HoverCSS['nav'] : defaultCSS['nav']
+                  } w-[90px] text-center font-bold transition-colors duration-300`}
                 >
                   {nav.text}
                 </li>
@@ -112,15 +140,29 @@ const Header = () => {
         </nav>
         <div className={`${flexRow} gap-4`}>
           <Link href="/signup">
-            <Button className="bg-white group-hover:bg-gray-300 group-hover:bg-black transition-colors duration-300">
-              <span className="text-black group-hover:text-white">
+            <Button
+              className={`${
+                isHover ? HoverCSS['button'] : defaultCSS['button']
+              } transition-colors duration-300`}
+            >
+              <span
+                className={`${isHover ? HoverCSS['text'] : defaultCSS['text']}`}
+              >
                 회원가입
               </span>
             </Button>
           </Link>
           <Link href="/login">
-            <Button className="bg-white group-hover:bg-gray-300 group-hover:bg-black transition-colors duration-300">
-              <span className="text-black group-hover:text-white">로그인</span>
+            <Button
+              className={`${
+                isHover ? HoverCSS['button'] : defaultCSS['button']
+              } transition-colors duration-300`}
+            >
+              <span
+                className={`${isHover ? HoverCSS['text'] : defaultCSS['text']}`}
+              >
+                로그인
+              </span>
             </Button>
           </Link>
         </div>
@@ -135,7 +177,12 @@ const Header = () => {
               >
                 {nav.items.map((item) => {
                   return (
-                    <li key={item.id} className="hover:font-bold">
+                    <li
+                      key={item.id}
+                      className={`${
+                        isHover ? HoverCSS['liItem'] : defaultCSS['liItem']
+                      }`}
+                    >
                       <Link href={item.router}>{item.text}</Link>
                     </li>
                   );
