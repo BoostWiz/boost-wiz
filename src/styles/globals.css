@@ -17,6 +17,7 @@
 body {
   width: 100vw;
   height: 100vh;
+  min-height: 100vh;
   color: var(--foreground);
   background: var(--background);
 }
@@ -24,5 +25,11 @@ body {
 @layer base {
   :root {
     --radius: 0.5rem;
+  }
+}
+
+@layer components {
+  .container-default {
+    @apply w-[1100px] h-full m-auto py-16;
   }
 }

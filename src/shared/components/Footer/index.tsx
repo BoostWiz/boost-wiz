@@ -75,7 +75,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className={`fixed bottom-0 m-auto w-full border-t-[1px] bg-white`}>
+    <footer className={`m-auto w-full border-t-[1px] bg-white`}>
       <div className={`${flexRowCenter} gap-16 p-8 min-w-[1100px]`}>
         <Link href="/">
           <Image
