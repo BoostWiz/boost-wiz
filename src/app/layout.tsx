@@ -20,8 +20,10 @@ export default function RootLayout({
       <MswProvider>
         <QueryProvider>
           <body className={`${mainFont.variable} font-mainfont`}>
-            {children}
-            <Footer />
+            <main className="h-full overflow-y-scroll">
+              {children}
+              <Footer />
+            </main>
           </body>
         </QueryProvider>
       </MswProvider>
