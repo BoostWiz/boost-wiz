@@ -12,7 +12,7 @@ const CardSchedule = ({ isCenter = false, data }: ScheduleCardProps) => {
   return (
     <div
       className={`w-full ${flexColumnCenter} gap-8 ${
-        isCenter ? 'shadow-lg scale-110 z-10' : 'h-[320px] z-0'
+        isCenter ? 'shadow-lg scale-110 z-10' : 'h-[320px] z-0 opacity-90'
       } rounded-sm border-[1px] border-slateGray bg-white cursor-pointer`}
     >
       {data === null ? (
