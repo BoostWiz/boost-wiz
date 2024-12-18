@@ -20,6 +20,11 @@ const meta = {
       option: ['sm', 'md', 'lg'],
       description: 'width값을 sm,md,lg 값 중 하나의 타입으로 넘겨받습니다.',
     },
+    onSelect: {
+      control: false,
+      description:
+        '컴포넌트 외부에서 선택한 값을 관리할 수 있도록 onSelect 콜백을 추가 useState의 Set함수를 보내주시면 됩니다.',
+    },
     itemList: {
       control: 'object',
       description: '',
@@ -34,6 +39,7 @@ export const Default: Story = {
   args: {
     defaultText: 'kt 그룹사 및 관련사이트',
     size: 'md',
+    onSelect: () => {},
     itemList: [
       {
         value: 'regular_schedule',
