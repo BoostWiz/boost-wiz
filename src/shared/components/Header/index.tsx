@@ -114,12 +114,14 @@ const Header = () => {
     <header
       className={`${
         isHover ? hoverCss['header'] : currentCSS['header']
-      } fixed top-0 w-full group  transition-colors duration-300 cursor-pointer`}
+      } fixed top-0 w-full group  transition-colors duration-300 cursor-pointer z-50`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className={`${flexRow} gap-16 items-center m-auto w-[1100px] border-b-[1px] border-lightGray`}
+        className={`${flexRow} ${
+          isHover && 'border-b-[1px] border-lightGray'
+        } gap-16 items-center m-auto w-[1100px]`}
       >
         <Link href="/">
           <Image
