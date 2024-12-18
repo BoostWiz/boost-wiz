@@ -124,23 +124,37 @@ SelectItem.displayName = SelectPrimitive.Item.displayName;
 interface SelectProps {
   defaultText: string;
   size: 'sm' | 'md' | 'lg';
+  onSelect: (value: string) => void;
   itemList: { value: string; text: string; callbackFunc?: () => void }[];
 }
 
-const Select = ({ defaultText, size, itemList }: SelectProps) => {
-  const calculatedWidth = () => {
-    switch (size) {
-      case 'sm':
-        return 'w-[160px]';
-      case 'md':
-        return 'w-[240px]';
-      case 'lg':
-        return 'w-[360px]';
+const Select = ({
+  defaultText,
+  size = 'md',
+  onSelect,
+  itemList,
+}: SelectProps) => {
+  const widthMap = {
+    sm: 'w-[160px]',
+    md: 'w-[240px]',
+    lg: 'w-[360px]',
+  };
+
+  const handleValueChange = (value: string) => {
+    const selectedItem = itemList.find((item) => item.value === value);
+
+    if (selectedItem?.callbackFunc) {
+      selectedItem.callbackFunc();
+    }
+
+    if (onSelect) {
+      onSelect(value);
     }
   };
+
   return (
-    <SelectRoot>
-      <SelectTrigger className={`${calculatedWidth()}`}>
+    <SelectRoot onValueChange={handleValueChange}>
+      <SelectTrigger className={`${widthMap[size] || widthMap.md}`}>
         <SelectValue placeholder={defaultText} />
       </SelectTrigger>
       <SelectContent>
