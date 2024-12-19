@@ -76,7 +76,9 @@ const Footer = () => {
 
   return (
     <footer className={`m-auto w-full border-t-[1px] bg-white`}>
-      <div className={`${flexRowCenter} gap-16 p-8 min-w-[1100px]`}>
+      <div
+        className={`${flexRowCenter} gap-16 p-2 sm:p-8 sm:w-[1100px] w-[360px] m-auto`}
+      >
         <Link href="/">
           <Image
             src={'/common/black_logo.svg'}
@@ -94,8 +96,13 @@ const Footer = () => {
                 return (
                   <Modal
                     triggerElement={
-                      <li key={nav.id} className="cursor-pointer">
-                        {nav.text}
+                      <li
+                        key={nav.id}
+                        className={`${flexRowCenter} text-center w-[50px] sm:w-[125px] cursor-pointer`}
+                      >
+                        <span className="text-caption sm:text-sm">
+                          {nav.text}
+                        </span>
                       </li>
                     }
                     titleElement={modalKey.title}
@@ -108,29 +115,35 @@ const Footer = () => {
           </nav>
           <article className={`${flexColumn} gap-2`}>
             <div className={`${flexRow} gap-2`}>
-              <span className="w-[60px] text-turquoise text-xs">대표번호</span>
+              <span className="w-[80px] text-turquoise text-caption sm:text-xs">
+                대표번호
+              </span>
               <div className={`${flexColumn}`}>
-                <span className="text-xs text-black font-bold">1899-5916</span>
-                <span className="text-xs text-gray">
+                <span className="text-caption sm:text-xs text-black font-bold">
+                  1899-5916
+                </span>
+                <span className="text-caption sm:text-xs text-gray">
                   (운영시간: 평일 10:00 ~ 18:00, 주말 10:00 ~ 경기시작 전까지,
                   월요일 및 주말 미경기 시 미운영)
                 </span>
               </div>
             </div>
             <div className={`${flexRow} gap-2`}>
-              <span className="w-[60px] text-turquoise text-xs">주소</span>
+              <span className="w-[80px] text-turquoise text-caption sm:text-xs">
+                주소
+              </span>
 
-              <span className="text-xs text-black">
+              <span className="text-caption sm:text-xs text-black">
                 경기도 수원시 장안구 경수대로 (조원동) 수원 케이티 위즈파크
               </span>
             </div>
-            <span className="text-xs text-gray">
+            <span className="text-caption sm:text-xs text-gray">
               Copyright 2022 kt sports. All rights reserved.
             </span>
           </article>
         </div>
 
-        <div className={`${flexColumn} gap-8`}>
+        <div className={`sm:${flexColumn} gap-8 sm:block hidden`}>
           {/* SelectBox - Kt 그룹사 및 관련사이트 */}
           <div className="w-[200px] h-[36px] border-[1px] border-gray rounded-sm curspr-pointer"></div>
           <div className={`${flexRow} gap-2`}>
