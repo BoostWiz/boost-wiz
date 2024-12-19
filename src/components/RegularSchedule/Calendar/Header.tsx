@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/shared/components';
-import { flexRow, flexRowCenter, flexRowSpaceBetween } from '@/styles/flex';
+import { flexColumn, flexRow, flexRowCenter } from '@/styles/flex';
 import OutcomeDisplay from './OutcomeDisplay';
 import { useState } from 'react';
 import { Select } from '@/shared/components/Select';
@@ -42,7 +42,9 @@ const CalendarHeader = () => {
   };
 
   return (
-    <header className={`${flexRowSpaceBetween} items-center`}>
+    <header
+      className={`${flexColumn} gap-4 sm:flex-row sm:justify-between items-center`}
+    >
       <div className={`${flexRow} gap-4`}>
         <Button
           variant={`${!isAll ? 'default' : 'outline'}`}

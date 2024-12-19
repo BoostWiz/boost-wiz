@@ -1,6 +1,6 @@
 'use client';
 
-import { flexColumnCenter, flexRow } from '@/styles/flex';
+import { flexColumn, flexColumnCenter, flexRow } from '@/styles/flex';
 import CardSchedule from './CardSchedule';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -51,11 +51,11 @@ const CardScheduleList = () => {
   ];
 
   return (
-    <div className={`${flexRow} relative`}>
+    <div className={`flex sm:flex-row flex-col relative`}>
       <div
         className={`${flexColumnCenter} ${
           currentIndex === 0 ? 'hidden' : 'visible'
-        } absolute top-1/2 left-[-42px] w-[36px] h-[36px] rounded-full bg-turquoise z-20 cursor-pointer`}
+        } absolute top-1/2 left-[-84px] sm:left-[-42px] w-[36px] h-[36px] rounded-full bg-turquoise z-20 cursor-pointer`}
         onClick={handleLeftClick}
       >
         <Image
@@ -80,7 +80,7 @@ const CardScheduleList = () => {
           currentIndex >= cardDummyData.length - defaultCardNum
             ? 'hidden'
             : 'visible'
-        } absolute top-1/2 right-[-42px] w-[36px] h-[36px] rounded-full bg-turquoise z-20 cursor-pointer`}
+        } absolute top-1/2 right-[-84px] sm:right-[-42px] w-[36px] h-[36px] rounded-full bg-turquoise z-20 cursor-pointer`}
         onClick={handleRightClick}
       >
         <Image

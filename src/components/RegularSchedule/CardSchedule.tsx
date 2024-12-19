@@ -12,7 +12,7 @@ const CardSchedule = ({ isCenter = false, data }: ScheduleCardProps) => {
   return (
     <div
       className={`w-full ${flexColumnCenter} gap-8 ${
-        isCenter ? 'shadow-lg scale-110 z-10' : 'h-[320px] z-0 opacity-90'
+        isCenter ? 'py-2 shadow-lg scale-110 z-10' : 'h-[320px] z-0 opacity-90'
       } rounded-sm border-[1px] border-slateGray bg-white cursor-pointer`}
     >
       {data === null ? (
@@ -40,13 +40,15 @@ const CardSchedule = ({ isCenter = false, data }: ScheduleCardProps) => {
             </div>
 
             <div className={`${flexColumnCenter} gap-8`}>
-              <span className="text-xl">
+              <span className="sm:text-xl">
                 {data.loseTeam.score} : {data.winTeam.score}
               </span>
               <span className="text-primary text-xl">승</span>
               <Link href="/">
-                <div className="px-3 py-1 bg-turquoise rounded-3xl">
-                  <span className="text-sm text-white">경기정보</span>
+                <div
+                  className={`${flexRowCenter} px-2 py-1 bg-turquoise rounded-3xl`}
+                >
+                  <span className="text-caption text-white">경기정보</span>
                 </div>
               </Link>
             </div>
