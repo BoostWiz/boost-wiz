@@ -1,3 +1,4 @@
+import BoxScore from '@/components/BoxScore';
 import Banner from '@/shared/components/Banner';
 
 export default function BoxScorePage() {
@@ -9,6 +10,7 @@ export default function BoxScorePage() {
           description="박스스코어 정보를 알려드립니다."
         />
       </div>
+      <BoxScore />
     </section>
   );
 }
