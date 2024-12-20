@@ -27,7 +27,7 @@ export const navData = [
     text: 'Game',
     router: '/game',
     items: [
-      { id: 'regular', text: '정규 리그', router: '/game/regular' },
+      { id: 'regular', text: '정규 리그', router: '/game/schedule' },
       { id: 'boxscore', text: '박스 스코어', router: '/game/boxscore' },
       { id: 'ranking', text: '순위 기록', router: '/game/ranking' },
       { id: 'point', text: '관전포인트', router: '/game/point' },
