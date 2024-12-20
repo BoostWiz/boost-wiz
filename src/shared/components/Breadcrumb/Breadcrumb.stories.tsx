@@ -29,6 +29,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     breadList: ['Game', '정규 리그', '경기 일정'],
-    pathname: '/game/regular/schedule',
+    pathname: '/game/schedule',
   },
 };
