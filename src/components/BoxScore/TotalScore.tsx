@@ -13,7 +13,7 @@ const TotalScore = () => {
         <div className={`${flexRowCenter} h-[55%] w-full`}>
           <div className={`${flexRowCenter} w-[30%] h-full`}>
             <div className={`${flexColumnCenter} w-[30%] h-full`}>
-              <p className="text-2xl">KT</p>
+              <p className="text-2xl font-bold">KT</p>
               <p className="text-sm">승 - 김민</p>
             </div>
             <div className="w-[30%] text-center">로고</div>
@@ -31,7 +31,7 @@ const TotalScore = () => {
             <div className="w-[30%] text-center font-bold text-5xl">2</div>
             <div className="w-[30%] text-center">로고</div>
             <div className={`${flexColumnCenter} w-[30%] h-full`}>
-              <p className="text-2xl">LG</p>
+              <p className="text-2xl font-bold">LG</p>
               <p className="text-sm">패 - 최원태</p>
             </div>
           </div>
