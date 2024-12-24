@@ -36,14 +36,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     currentTab: '구단 소개',
-    tabsData: {
-      coachstep: { text: '코칭 스텝', router: '/player/coachstep' },
-      pitcher: { text: '투수', router: '/player/pitcher' },
-      batter: { text: '타자', router: 'player/batter' },
-      chhersquad: { text: '응원단', router: 'player/cheersquad' },
-      cheersong: { text: '응원가', router: 'player/cheersong' },
-      copyright: { text: '응원가 저작권', router: 'player/copyright' },
-    },
+    tabsData: ['구단 소개', '구단 연혁'],
     onTabChange: fn(),
   },
   render: (args) => {
