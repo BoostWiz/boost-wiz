@@ -113,17 +113,11 @@ const BreadcrumbEllipsis = ({
 BreadcrumbEllipsis.displayName = 'BreadcrumbElipssis';
 
 interface BreadcrumbProps {
-  breadList: string[];
-  pathname: string;
+  breadList: { text: string; router: string }[];
 }
 
-const Breadcrumb = ({ breadList, pathname }: BreadcrumbProps) => {
+const Breadcrumb = ({ breadList }: BreadcrumbProps) => {
   const totalLen = breadList.length;
-
-  const pathnameArr = pathname.split('/');
-  pathnameArr.shift();
-
-  let router = '';
 
   return (
     <BreadcrumbRoot>
@@ -135,20 +129,19 @@ const Breadcrumb = ({ breadList, pathname }: BreadcrumbProps) => {
 
         {breadList.map((bread, idx) => {
           const lastItem = idx !== totalLen - 1;
-          router += pathnameArr[idx] + '/';
 
           return (
             <>
-              <BreadcrumbItem key={bread}>
+              <BreadcrumbItem key={bread.text}>
                 <BreadcrumbLink
-                  href={router}
+                  href={bread.router}
                   className={
                     lastItem
                       ? 'text-slateGray hover:text-slateGray/80'
                       : 'text-primary hover:text-primary/80'
                   }
                 >
-                  {bread}
+                  {bread.text}
                 </BreadcrumbLink>
               </BreadcrumbItem>
 
