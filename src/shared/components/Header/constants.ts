@@ -1,6 +1,5 @@
-export const navData = [
-  {
-    id: 'ktwiz',
+export const navData = {
+  ktwiz: {
     text: 'kt wiz',
     router: '/',
     items: [
@@ -11,8 +10,7 @@ export const navData = [
       { id: 'wallpaper', text: '월페이퍼', router: '/wallpaper' },
     ],
   },
-  {
-    id: 'wizpark',
+  wizpark: {
     text: 'wiz park',
     router: '/wiz',
     items: [
@@ -22,8 +20,7 @@ export const navData = [
       { id: 'iksan', text: '익산야구장', router: '/wiz/iksan' },
     ],
   },
-  {
-    id: 'game',
+  game: {
     text: 'Game',
     router: '/game',
     items: [
@@ -33,21 +30,19 @@ export const navData = [
       { id: 'point', text: '관전포인트', router: '/game/point' },
     ],
   },
-  {
-    id: 'player',
+  player: {
     text: 'Player',
     router: '/player',
     items: [
-      { id: 'coach', text: '코칭스텝', router: '/player/coach' },
-      { id: 'bowler', text: '투수', router: '/player/bowler' },
+      { id: 'coach', text: '코칭스텝', router: '/player/coachstep' },
+      { id: 'bowler', text: '투수', router: '/player/pitcher' },
       { id: 'batter', text: '타자', router: '/player/batter' },
-      { id: 'chher_squad', text: '응원단', router: '/player/cheer_squad' },
-      { id: 'chher_song', text: '응원가', router: '/player/cheer_song' },
+      { id: 'chher_squad', text: '응원단', router: '/player/cheersquad' },
+      { id: 'chher_song', text: '응원가', router: '/player/cheersong' },
       { id: 'copyright', text: '응원가 저작권', router: '/player/copyright' },
     ],
   },
-  {
-    id: 'media',
+  media: {
     text: 'Media',
     router: '/media',
     items: [
@@ -57,7 +52,7 @@ export const navData = [
       { id: 'wiz_photo', text: 'wiz 포토', router: '/media/photo' },
     ],
   },
-];
+};
 
 export const homeCss = {
   header: 'bg-transparent hover:text-black',

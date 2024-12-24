@@ -3,14 +3,9 @@ import * as TabsPrimitive from '@radix-ui/react-tabs';
 
 import { cn } from '@/shared/lib/utils';
 
-interface TabData {
-  text: string;
-  router?: string;
-}
-
-interface TabsProps<T extends TabData> {
+interface TabsProps {
   currentTab: string;
-  tabsData: Record<string, T>;
+  tabsData: string[];
   onTabChange: (newTab: string) => void;
 }
 
@@ -67,21 +62,13 @@ const TabsContent = React.forwardRef<
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
-const Tabs = <T extends TabData>({
-  currentTab,
-  tabsData,
-  onTabChange,
-}: TabsProps<T>) => {
+const Tabs = ({ currentTab, tabsData, onTabChange }: TabsProps) => {
   return (
     <TabsRoot value={currentTab} onValueChange={onTabChange}>
       <TabsList>
-        {Object.entries(tabsData).map(([tabKey, tabData]) => (
-          <TabsTrigger
-            key={tabKey}
-            value={tabData.text}
-            isActive={currentTab === tabData.text}
-          >
-            {tabData.text}
+        {tabsData.map((tab) => (
+          <TabsTrigger key={tab} value={tab} isActive={currentTab === tab}>
+            {tab}
           </TabsTrigger>
         ))}
       </TabsList>
