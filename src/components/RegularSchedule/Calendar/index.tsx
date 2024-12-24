@@ -5,7 +5,7 @@ import CalendarHeader from './Header';
 
 const Calendar = () => {
   return (
-    <section className="w-[980px] m-auto">
+    <section className="m-auto hidden sm:block">
       <CalendarHeader />
       <div className="mt-4">
         <CalendarContent />
