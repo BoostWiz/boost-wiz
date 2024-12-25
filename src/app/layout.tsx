@@ -18,17 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <MswProvider>
-        <QueryProvider>
-          <body className={`${mainFont.variable} font-mainfont`}>
+      <body className={`${mainFont.variable} font-mainfont`}>
+        <MswProvider>
+          <QueryProvider>
             <main className="h-full overflow-y-scroll">
               <Header />
               {children}
               <Footer />
             </main>
-          </body>
-        </QueryProvider>
-      </MswProvider>
+          </QueryProvider>
+        </MswProvider>
+      </body>
     </html>
   );
 }
