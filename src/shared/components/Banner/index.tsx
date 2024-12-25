@@ -20,7 +20,9 @@ const Banner = ({
 }: BannerProps) => {
   const router = useRouter();
 
-  const [currentTab, setCurrentTab] = useState(navData ? navData[0].text : '');
+  const [currentTab, setCurrentTab] = useState(
+    navData ? (navData?.find((d) => d.text === title)?.text as string) : '',
+  );
 
   const handleGoRouter = (selectText: string) => {
     setCurrentTab(selectText);
