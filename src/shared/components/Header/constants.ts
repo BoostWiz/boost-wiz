@@ -38,7 +38,7 @@ export const navData = {
       { id: 'pitcher', text: '투수', router: '/player/pitcher' },
       { id: 'batter', text: '타자', router: '/player/batter' },
       { id: 'cheersquad', text: '응원단', router: '/player/cheersquad' },
-      { id: 'chhersong', text: '응원가', router: '/player/cheersong' },
+      { id: 'cheersong', text: '응원가', router: '/player/cheersong' },
       { id: 'copyright', text: '응원가 저작권', router: '/player/copyright' },
     ],
   },

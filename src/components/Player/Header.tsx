@@ -1,5 +1,6 @@
 import { Breadcrumb } from '@/shared/components/Breadcrumb';
 import { flexRowSpaceBetween } from '@/styles/flex';
+import SearchInput from './SearchInput';
 
 const Header = ({
   breadList,
@@ -8,8 +9,12 @@ const Header = ({
 }) => {
   return (
     <header className={`${flexRowSpaceBetween} mb-4`}>
-      <div>Search Input Component</div>
-      <Breadcrumb breadList={breadList} />
+      <div>
+        <SearchInput />
+      </div>
+      <div className="mt-2">
+        <Breadcrumb breadList={breadList} />
+      </div>
     </header>
   );
 };

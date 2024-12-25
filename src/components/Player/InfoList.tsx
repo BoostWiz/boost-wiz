@@ -1,6 +1,7 @@
 import { PlayerInfoType } from '@/interface/player';
 import { Modal } from '@/shared/components';
 import { flexColumn, flexRow } from '@/styles/flex';
+import InfoDetail from './InfoDetail';
 
 interface InfoListProps {
   data: PlayerInfoType[];
@@ -27,6 +28,11 @@ const Info = ({ player }: { player: PlayerInfoType }) => {
       }
       titleElement="선수 상세 정보"
       isClosedIcon={true}
+      children={
+        <section className={`${flexColumn} w-full`}>
+          <InfoDetail pcode={player.pcode} />
+        </section>
+      }
     />
   );
 };
