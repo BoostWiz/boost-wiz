@@ -41,8 +41,8 @@ const MobileHeader = () => {
       {isOpen && (
         <nav className="bg-gray-800">
           <ul className={`${flexColumn} gap-2 p-4`}>
-            {navData.map((nav) => (
-              <li key={nav.id} className="text-white">
+            {Object.entries(navData).map(([key, nav]) => (
+              <li key={key} className="text-white">
                 <Link href={nav.router}>{nav.text}</Link>
               </li>
             ))}
