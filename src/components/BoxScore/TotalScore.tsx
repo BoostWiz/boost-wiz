@@ -15,36 +15,15 @@ import {
 interface propsType {
   schedule: any;
   scoreboard: any;
+  maxInning: number;
 }
 
-const TotalScore = ({ schedule, scoreboard }: propsType) => {
+const TotalScore = ({ schedule, scoreboard, maxInning }: propsType) => {
   // 게임 날짜 나눠서 출력하는 함수
   const formatGameDate = (gameDate: any) => {
     const date = String(gameDate);
     return `${date.slice(0, 4)}.${date.slice(4, 6)}.${date.slice(6, 8)}`;
   };
-
-  // 연장 갔는지 체크하는 함수
-  const checkExtraInnings = (scoreData: any) => {
-    // 10회부터 12회까지 확인
-    for (let i = 10; i <= 12; i++) {
-      // 홈팀이나 원정팀 중 하나라도 점수가 있으면 ('-'가 아니면)
-      if (
-        scoreData[0][`score${i}`] !== '-' ||
-        scoreData[1][`score${i}`] !== '-'
-      ) {
-        return true; // 연장전
-      }
-    }
-    return false; // 연장전 아님
-  };
-
-  // 이닝 수 결정 함수
-  const getMaxInnings = (scoreData: any) => {
-    return checkExtraInnings(scoreData) ? 12 : 9;
-  };
-
-  const maxInning = getMaxInnings(scoreboard);
 
   return (
     <div className={`${flexRow} h-[250px] bg-[#ECEEF2]/50`}>

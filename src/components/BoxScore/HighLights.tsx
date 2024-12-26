@@ -11,7 +11,7 @@ const HighLights = ({ highLightInfo }: propsType) => {
   return (
     <div className="pt-6">
       <GameInformationTitle titleText="주요 기록" />
-      <div className="my-4 h-[300px]">
+      <div className="my-4">
         <Separator />
         {/* 타입 지정 수정 필요 */}
         {highLightInfo.map((info: any) => {
