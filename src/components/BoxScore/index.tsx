@@ -13,7 +13,7 @@ const BoxScore = ({ boxscoreData }: any) => {
           schedule={boxscoreData.schedule}
           scoreboard={boxscoreData.scoreboard}
         />
-        <HighLights />
+        <HighLights highLightInfo={boxscoreData.etcgames} />
         <BattingStats teamName="KT" />
         <BattingStats teamName="상대팀" />
         <PitchingStats teamName="KT" />
