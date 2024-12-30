@@ -3,6 +3,10 @@
 import { useState } from 'react';
 import { TabsRoot, TabsList, TabsTrigger } from '@/shared/components/Tabs';
 import { flexColumnCenter } from '@/styles/flex';
+import TeamRanking from './TeamRanking';
+import PitcherRanking from './PitcherRanking';
+import BatterRanking from './BatterRanking';
+import Attendance from './Attendance';
 
 const Ranking = () => {
   const [currentTab, setCurrentTab] = useState('팀순위');
@@ -33,6 +37,10 @@ const Ranking = () => {
             ))}
           </TabsList>
         </TabsRoot>
+        {currentTab === '팀순위' && <TeamRanking />}
+        {currentTab === '투수순위' && <PitcherRanking />}
+        {currentTab === '타자순위' && <BatterRanking />}
+        {currentTab === '관중현황' && <Attendance />}
       </div>
     </div>
   );
