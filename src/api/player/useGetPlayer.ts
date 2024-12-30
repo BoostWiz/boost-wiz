@@ -4,12 +4,25 @@ import axios from 'axios';
 
 const useGetPlayer = (playerId: PlayerIdType) => {
   const { data } = useQuery({
-    queryKey: ['players', playerId],
+    queryKey: ['player', playerId],
     queryFn: async () => {
-      // TODO: server url 변경 예정
-      const response = await axios.get(`/api/players/${playerId}`);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/player/${playerId}`,
+      );
 
-      return response.data.data.map((d: PlayerType) => {
+      if (playerId === 'coachlist') {
+        return response.data.data.list.map((d: PlayerType) => {
+          return {
+            pcode: d.pcode,
+            backgroundUrl: d.playerPrvwImg,
+            position: d.position,
+            playerName: d.playerName,
+            backnum: d.backnum,
+          };
+        });
+      }
+
+      return response.data.map((d: PlayerType) => {
         return {
           pcode: d.pcode,
           backgroundUrl: d.playerPrvwImg,

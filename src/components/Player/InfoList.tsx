@@ -1,13 +1,19 @@
-import { PlayerInfoType } from '@/interface/player';
+import { PlayerDetailType, PlayerInfoType } from '@/interface/player';
 import { Modal } from '@/shared/components';
 import { flexColumn, flexRow } from '@/styles/flex';
 import InfoDetail from './InfoDetail';
 
 interface InfoListProps {
   data: PlayerInfoType[];
+  playerDetailType: PlayerDetailType;
 }
 
-const Info = ({ player }: { player: PlayerInfoType }) => {
+interface InfoProps {
+  player: PlayerInfoType;
+  playerDetailType: PlayerDetailType;
+}
+
+const Info = ({ player, playerDetailType }: InfoProps) => {
   return (
     <Modal
       triggerElement={
@@ -30,18 +36,27 @@ const Info = ({ player }: { player: PlayerInfoType }) => {
       isClosedIcon={true}
       children={
         <section className={`${flexColumn} w-full`}>
-          <InfoDetail pcode={player.pcode} />
+          <InfoDetail
+            pcode={player.pcode}
+            playerDetailType={playerDetailType}
+          />
         </section>
       }
     />
   );
 };
 
-const InfoList = ({ data }: InfoListProps) => {
+const InfoList = ({ data, playerDetailType }: InfoListProps) => {
   return (
     <section className={`${flexRow} gap-4 flex-wrap`}>
       {data.map((player) => {
-        return <Info key={player.pcode} player={player} />;
+        return (
+          <Info
+            key={player.pcode}
+            player={player}
+            playerDetailType={playerDetailType}
+          />
+        );
       })}
     </section>
   );
