@@ -12,7 +12,7 @@ export default function PitcherPage() {
           navData={navData['player'].items}
         />
       </div>
-      <Player playerId="pitcher" />
+      <Player playerId="pitcherlist" />
     </section>
   );
 }

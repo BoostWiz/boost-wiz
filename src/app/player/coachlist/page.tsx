@@ -12,7 +12,7 @@ export default function CoachStepPage() {
           navData={navData['player'].items}
         />
       </div>
-      <Player playerId="coachstep" />
+      <Player playerId="coachlist" />
     </section>
   );
 }

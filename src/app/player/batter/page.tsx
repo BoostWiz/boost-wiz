@@ -7,12 +7,12 @@ export default function BatterPage() {
     <section>
       <div className="mt-[100px]">
         <Banner
-          title="타자"
-          description="kt wiz의 자랑스런 타자들을 소개합니다."
+          title="포수"
+          description="kt wiz의 자랑스런 포수들을 소개합니다."
           navData={navData['player'].items}
         />
       </div>
-      <Player playerId="batter" />
+      <Player playerId="catcherlist" />
     </section>
   );
 }

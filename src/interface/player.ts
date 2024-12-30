@@ -1,10 +1,14 @@
 export type PlayerIdType =
-  | 'coachstep'
-  | 'pitcher'
-  | 'batter'
-  | 'cheersquad'
-  | 'cheersong'
-  | 'copyright';
+  | 'coachlist'
+  | 'pitcherlist'
+  | 'catcherlist'
+  | 'infielderlist';
+
+export type PlayerDetailType =
+  | 'coachdetail'
+  | 'pitcherdetail'
+  | 'catcherdetail'
+  | 'infielderdetail';
 
 export interface PlayerInfoType {
   pcode: string;
@@ -12,7 +16,7 @@ export interface PlayerInfoType {
   position: string;
   playerName: string;
   backnum: string;
-  rank: number;
+  rank?: number;
 }
 export interface PlayerType {
   backnum: string;
