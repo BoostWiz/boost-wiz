@@ -21,7 +21,7 @@ const InfoDetail = ({ pcode, playerDetailType }: InfoDetailProps) => {
   return (
     playerDetail && (
       <>
-        <div className={`${flexColumnCenter} gap-4`}>
+        <div className={`${flexColumnCenter} gap-4 min-w-[250px]`}>
           <Image
             src={playerDetail.playerPrvwImg}
             alt="player image"
@@ -52,14 +52,14 @@ const InfoDetail = ({ pcode, playerDetailType }: InfoDetailProps) => {
               <span className="text-xs">순위: {playerDetail.rank}위</span>
             )}
           </div>
-          <DialogClose>
+          {/* <DialogClose>
             <Button
               variant="outline"
               onClick={() => alert('서비스 준비중입니다....')}
             >
               <span className="text-xs">더 자세히 알아보기</span>
             </Button>
-          </DialogClose>
+          </DialogClose> */}
         </div>
       </>
     )

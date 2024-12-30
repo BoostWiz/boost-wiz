@@ -2,6 +2,8 @@ import { PlayerDetailType, PlayerInfoType } from '@/interface/player';
 import { Modal } from '@/shared/components';
 import { flexColumn, flexRow } from '@/styles/flex';
 import InfoDetail from './InfoDetail';
+import HitsSpray from './HitsSpray';
+import PitchValue from './PitchValue';
 
 interface InfoListProps {
   data: PlayerInfoType[];
@@ -35,11 +37,24 @@ const Info = ({ player, playerDetailType }: InfoProps) => {
       titleElement="선수 상세 정보"
       isClosedIcon={true}
       children={
-        <section className={`${flexColumn} w-full`}>
+        <section className={`${flexRow} gap-4`}>
           <InfoDetail
             pcode={player.pcode}
             playerDetailType={playerDetailType}
           />
+          {playerDetailType === 'pitcherdetail' && (
+            <PitchValue
+              playerName={player.playerName}
+              playerDetailType={playerDetailType}
+            />
+          )}
+          {(playerDetailType === 'infielderdetail' ||
+            playerDetailType === 'catcherdetail') && (
+            <HitsSpray
+              playerName={player.playerName}
+              playerDetailType={playerDetailType}
+            />
+          )}
         </section>
       }
     />
