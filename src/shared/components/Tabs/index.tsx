@@ -78,4 +78,4 @@ const Tabs = ({ currentTab, tabsData, onTabChange }: TabsProps) => {
 
 Tabs.displayName = 'Tabs';
 
-export { Tabs };
+export { Tabs, TabsRoot, TabsList, TabsTrigger };
