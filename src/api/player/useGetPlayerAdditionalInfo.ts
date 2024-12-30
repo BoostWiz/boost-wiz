@@ -21,8 +21,7 @@ const useGetPlayerAdditionalInfo = (
         playerDetailType === 'infielderdetail' ||
         playerDetailType === 'catcherdetail'
       ) {
-        // TODO: 내야수 or 포수일 때 데이터 파싱 작업 필요.
-        return [];
+        return response.data;
       }
     },
   });
