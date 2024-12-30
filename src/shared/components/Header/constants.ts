@@ -37,9 +37,8 @@ export const navData = {
       { id: 'coachlist', text: '코칭스텝', router: '/player/coachlist' },
       { id: 'pitchepitcherlistr', text: '투수', router: '/player/pitcher' },
       { id: 'catcherlist', text: '포수', router: '/player/batter' },
+      { id: 'infielderlist', text: '내야수', router: '/player/infielderlist' },
       { id: 'cheerleader', text: '응원단', router: '/player/cheersquad' },
-      { id: 'cheersong', text: '응원가', router: '/player/cheersong' },
-      { id: 'copyright', text: '응원가 저작권', router: '/player/copyright' },
     ],
   },
   media: {

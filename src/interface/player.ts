@@ -10,6 +10,18 @@ export type PlayerDetailType =
   | 'catcherdetail'
   | 'infielderdetail';
 
+export interface CourseType {
+  info: string;
+  style: string;
+}
+
+export interface HitsSprayCourseData {
+  ['course double']: CourseType[];
+  ['course home_run']: CourseType[];
+  ['course single']: CourseType[];
+  ['course triple']: CourseType[];
+}
+
 export interface PlayerInfoType {
   pcode: string;
   backgroundUrl: string;
