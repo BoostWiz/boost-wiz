@@ -5,6 +5,8 @@ export type PlayerIdType =
   | 'infielderlist'
   | 'cheerleader';
 
+export type PlayerIdWithoutCheerleader = Exclude<PlayerIdType, 'cheerleader'>;
+
 export type PlayerDetailType =
   | 'coachdetail'
   | 'pitcherdetail'
