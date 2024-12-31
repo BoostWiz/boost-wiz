@@ -35,10 +35,10 @@ export const navData = {
     router: '/player',
     items: [
       { id: 'coachlist', text: '코칭스텝', router: '/player/coachlist' },
-      { id: 'pitchepitcherlistr', text: '투수', router: '/player/pitcher' },
+      { id: 'pitcherlist', text: '투수', router: '/player/pitcher' },
       { id: 'catcherlist', text: '포수', router: '/player/batter' },
       { id: 'infielderlist', text: '내야수', router: '/player/infielderlist' },
-      { id: 'cheerleader', text: '응원단', router: '/player/cheersquad' },
+      { id: 'cheerleader', text: '응원단', router: '/player/cheerleader' },
     ],
   },
   media: {
