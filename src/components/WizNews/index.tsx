@@ -5,6 +5,7 @@ import { navData } from '@/shared/components/Header/constants';
 import { NewsId } from '@/interface/media';
 import Header from './Header';
 import NewsList from '@/components/WizNews/NewsList';
+import PaginationComponent from '@/shared/components/Pagination';
 
 const WizNews = ({ newsId, newsData }: { newsId: NewsId, newsData: any }) => {
 
@@ -30,7 +31,7 @@ const WizNews = ({ newsId, newsData }: { newsId: NewsId, newsData: any }) => {
         }
       </div>
       <div className="border-t-[2px] border-primary">
-        Pagenation
+        <PaginationComponent/>
       </div>
     </div>
   );
