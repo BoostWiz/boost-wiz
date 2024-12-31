@@ -4,7 +4,7 @@ import useGetPlayer from '@/api/player/useGetPlayer';
 import { CheerleaderType } from '@/interface/player';
 import { flexColumn, flexRow } from '@/styles/flex';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 const InfoList = () => {
   const { players } = useGetPlayer('cheerleader');
@@ -24,10 +24,9 @@ const InfoList = () => {
     }
   };
 
-  const visiblePlayers = players?.slice(
-    currentIndex,
-    currentIndex + itemsToShow,
-  );
+  const visiblePlayers = useMemo(() => {
+    return players.slice(currentIndex, currentIndex + itemsToShow);
+  }, [players]);
 
   useEffect(() => {
     if (players) {
