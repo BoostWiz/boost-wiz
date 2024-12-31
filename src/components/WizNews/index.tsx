@@ -8,8 +8,8 @@ import Header from './Header';
 const WizNews = ({newsId} : {newsId: NewsId}) => {
 
   const calculatedBreadList = useMemo(() => {
-    const item = navData['media'].items.find((item) => item.id === newsId);
-    const breadList = [{ text: 'media', router: '/media' }];
+    const item = navData['media'].items_news.find((item) => item.id === newsId);
+    const breadList = [{ text: 'media_news', router: '/media' }];
 
     if (item) {
       breadList.push({ text: item.text, router: item.router });

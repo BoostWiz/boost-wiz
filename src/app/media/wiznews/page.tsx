@@ -9,7 +9,7 @@ export default function WizNewsPage() {
         <Banner
           title="wiz 뉴스"
           description="kt wiz의 새소식을 발빠르게 전해 드립니다."
-          navData={navData['media'].items}
+          navData={navData['media'].items_news}
         />
       </div>
       <WizNews newsId={"wiz_news"}/>
