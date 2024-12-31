@@ -4,14 +4,14 @@ import SearchInput from './SearchInput';
 
 const Header = ({
   breadList,
+  isSearch = true,
 }: {
+  isSearch?: boolean;
   breadList: { text: string; router: string }[];
 }) => {
   return (
     <header className={`${flexRowSpaceBetween} mb-4`}>
-      <div>
-        <SearchInput />
-      </div>
+      <div>{isSearch && <SearchInput />}</div>
       <div className="mt-2">
         <Breadcrumb breadList={breadList} />
       </div>

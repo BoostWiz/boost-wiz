@@ -22,6 +22,10 @@ const useGetPlayer = (playerId: PlayerIdType) => {
         });
       }
 
+      if (playerId === 'cheerleader') {
+        return response.data.data.list;
+      }
+
       return response.data.map((d: PlayerType) => {
         return {
           pcode: d.pcode,
