@@ -43,7 +43,7 @@ const NewsArticle = ({articleData}: {articleData: any}) => {
           </div>
         </div>
       </div>
-      <div className={`${flexRow} justify-between items-center justify-items-center h-[60px] mt-4 px-4 bg-[#ECEEF2] rounded-lg`}>
+      <div className={`${flexRow} justify-between items-center justify-items-center h-[60px] mt-4 mb-6 px-4 bg-[#ECEEF2] rounded-lg`}>
         <div className={`${flexRow} gap-2`}>
           <Link href={articleData.artcPrevSeq !== 0 ? `/media/wiznews/${articleData.artcPrevSeq}` : "javascript:void(0);"}>
             <div>
