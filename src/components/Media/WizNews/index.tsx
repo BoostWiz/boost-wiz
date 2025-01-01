@@ -3,8 +3,8 @@
 import { useMemo } from 'react';
 import { navData } from '@/shared/components/Header/constants';
 import { NewsId } from '@/interface/media';
-import Header from './Header';
-import NewsList from '@/components/WizNews/NewsList';
+import Header from '../Header';
+import NewsPage from '@/components/Media/NewsPage';
 import PaginationComponent from '@/shared/components/Pagination';
 
 const WizNews = ({ newsId, newsData }: { newsId: NewsId, newsData: any }) => {
@@ -22,15 +22,15 @@ const WizNews = ({ newsId, newsData }: { newsId: NewsId, newsData: any }) => {
 
   return (
     <div className="container-default">
-      <Header breadList={calculatedBreadList} />
+      <Header type="list" breadList={calculatedBreadList} />
       <div className="border-t-[2px] border-primary">
         {
           newsData.slice(0, 5).map((item: any) => (
-            <NewsList newsData={item} />
+            <NewsPage newsData={item} />
           ))
         }
       </div>
-      <div className="border-t-[2px] border-primary">
+      <div>
         <PaginationComponent/>
       </div>
     </div>

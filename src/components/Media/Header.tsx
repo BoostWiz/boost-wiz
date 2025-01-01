@@ -1,17 +1,20 @@
 import { Breadcrumb } from '@/shared/components/Breadcrumb';
 import { flexRowSpaceBetween } from '@/styles/flex';
-import SearchBar from '@/components/WizNews/SearchBar';
+import SearchBar from '@/components/Media/SearchBar';
 
 
 const Header = ({
-                  breadList,
+                  type, breadList,
                 }: {
-  breadList: { text: string; router: string }[];
+  type?: string, breadList: { text: string; router: string }[];
 }) => {
   return (
     <header className={`${flexRowSpaceBetween} mb-4`}>
       <div>
-        <SearchBar/>
+        {
+          type === 'list'
+          ? <SearchBar /> : null
+        }
       </div>
       <div className="mt-2">
         <Breadcrumb breadList={breadList} />

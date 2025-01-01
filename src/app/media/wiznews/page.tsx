@@ -1,5 +1,5 @@
 import Banner from '@/shared/components/Banner';
-import WizNews from '@/components/WizNews';
+import WizNews from '@/components/Media/WizNews';
 import { navData } from '@/shared/components/Header/constants';
 import newsMockData from '@/mocks/data/newslist.json';
 
