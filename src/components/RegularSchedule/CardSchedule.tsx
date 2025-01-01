@@ -1,10 +1,10 @@
 import { flexColumnCenter, flexRowCenter } from '@/styles/flex';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ScheduleDataProps } from './CardScheduleList';
+import { ScheduleType } from '@/interface/game';
 
 interface ScheduleCardProps {
-  data: ScheduleDataProps;
+  data: ScheduleType | null;
   isCenter: boolean;
 }
 
@@ -22,26 +22,24 @@ const CardSchedule = ({ isCenter = false, data }: ScheduleCardProps) => {
       ) : (
         <>
           <div className="px-3 py-1 bg-fireEngineRed rounded-3xl">
-            <span className="text-sm text-white">{data.date}</span>
+            <span className="text-sm text-white">{data.displayDate}</span>
           </div>
           <div></div>
           <div className={`${flexRowCenter} gap-8`}>
             <div className={`${flexColumnCenter} gap-2`}>
               <Image
-                src={data.loseTeam.logo}
+                src={data.homeLogo}
                 alt="team logo"
                 width={100}
                 height={75}
               />
-              <span>{data.loseTeam.name}</span>
-              <span className="text-sm text-slateGray">
-                선발: {data.loseTeam.starting}
-              </span>
+              <span>{data.homeKey}</span>
+              <span className="text-sm text-slateGray">선발:</span>
             </div>
 
             <div className={`${flexColumnCenter} gap-8`}>
               <span className="sm:text-xl">
-                {data.loseTeam.score} : {data.winTeam.score}
+                {data.visitScore} : {data.homeScore}
               </span>
               <span className="text-primary text-xl">승</span>
               <Link href="/">
@@ -55,15 +53,13 @@ const CardSchedule = ({ isCenter = false, data }: ScheduleCardProps) => {
 
             <div className={`${flexColumnCenter} gap-2`}>
               <Image
-                src={data.winTeam.logo}
+                src={data.visitLogo}
                 alt="team logo"
                 width={100}
                 height={75}
               />
-              <span>{data.winTeam.name}</span>
-              <span className="text-sm text-slateGray">
-                선발: {data.winTeam.starting}
-              </span>
+              <span>{data.visitKey}</span>
+              <span className="text-sm text-slateGray">선발:</span>
             </div>
           </div>
         </>
