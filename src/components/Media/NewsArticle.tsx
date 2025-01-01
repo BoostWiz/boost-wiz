@@ -11,7 +11,6 @@ const NewsArticle = ({articleData}: {articleData: any}) => {
   const htmlString = articleData.artcContents;
   const baseUrl = "https://www.ktwiz.co.kr";
 
-
   const onClickEvent = () => {
   };
 
@@ -45,15 +44,15 @@ const NewsArticle = ({articleData}: {articleData: any}) => {
         </div>
       </div>
       <div className={`${flexRow} justify-between items-center justify-items-center h-[60px] mt-4 px-4 bg-[#ECEEF2] rounded-lg`}>
-        <div className={`${flexRow} gap-4`}>
-          <Link href={`/media/wiznews/${articleData.artcPrevSe}`}>
+        <div className={`${flexRow} gap-2`}>
+          <Link href={articleData.artcPrevSeq !== 0 ? `/media/wiznews/${articleData.artcPrevSeq}` : "javascript:void(0);"}>
             <div>
               <Button className="h-10" variant="default" onClick={onClickEvent}>
                 <span className={`${flexRowCenter} text-xs gap-2`}><ArrowLeft />이전</span>
               </Button>
             </div>
           </Link>
-          <Link href={`/media/wiznews/${articleData.artcNextSeq}`}>
+          <Link href={articleData.artcNextSeq !== 0 ? `/media/wiznews/${articleData.artcNextSeq}` : "javascript:void(0);"}>
             <div>
               <Button className="h-10" variant="default" onClick={onClickEvent}>
                 <span className={`${flexRowCenter} text-xs gap-2`}>다음<ArrowRight /></span>
