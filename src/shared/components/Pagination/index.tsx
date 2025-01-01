@@ -10,7 +10,7 @@ import {
 
 const PaginationComponent = () => {
   return (
-    <div className="mt-4">
+    <div className="mt-10">
       <Pagination>
         <PaginationContent>
           <PaginationItem>
