@@ -7,6 +7,7 @@ export default {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/shared/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -43,6 +44,10 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      backgroundImage: {
+        'gradient-custom':
+          'linear-gradient(110deg, #f53232 6%, #cc65de 46%, #2ab2c6 84%)',
       },
     },
   },
