@@ -9,7 +9,7 @@ import BatterRanking from './BatterRanking';
 import Attendance from './Attendance';
 
 const Ranking = () => {
-  const [currentTab, setCurrentTab] = useState('투수순위');
+  const [currentTab, setCurrentTab] = useState('팀순위');
   const tabsData = ['팀순위', '투수순위', '타자순위', '관중현황'];
 
   return (
