@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { navData } from '@/shared/components/Header/constants';
 import { NewsId } from '@/interface/media';
 import Header from '../Header';
-import NewsPage from '@/components/Media/NewsPage';
+import NewsItem from '@/components/Media/NewsItem';
 import PaginationComponent from '@/shared/components/Pagination';
 
 const WizNews = ({ newsId, newsData }: { newsId: NewsId, newsData: any }) => {
@@ -26,7 +26,7 @@ const WizNews = ({ newsId, newsData }: { newsId: NewsId, newsData: any }) => {
       <div className="border-t-[2px] border-primary">
         {
           newsData.slice(0, 5).map((item: any) => (
-            <NewsPage newsData={item} />
+            <NewsItem newsData={item} />
           ))
         }
       </div>

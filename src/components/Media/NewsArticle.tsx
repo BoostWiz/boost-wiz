@@ -30,31 +30,32 @@ const NewsArticle = ({articleData}: {articleData: any}) => {
         </div>
       </div>
       <div className={`${flexColumnCenter} mt-4 p-8 bg-[#ECEEF2] rounded-lg`}>
-        <div className={`${flexColumnCenter} gap-2 [&_img]:mt-2`} dangerouslySetInnerHTML={{__html : replacePathToImgSrc(htmlString, baseUrl)}} />
+        <div className={`${flexColumnCenter} gap-2 [&_img]:mt-4`}
+             dangerouslySetInnerHTML={{__html : replacePathToImgSrc(htmlString, baseUrl)}} />
         <div className={`${flexRowCenter} gap-2 mb-4`}>
-          <div>
+          <div className={`${flexColumnCenter} w-12 h-12 bg-white rounded cursor-pointer`}>
             <Image src="/sns/kakaotalk.svg" alt="Kakaotalk" width={30} height={30} />
           </div>
-          <div>
+          <div className={`${flexColumnCenter} w-12 h-12 bg-white rounded cursor-pointer`}>
             <Image src="/sns/facebook.svg" alt="Kakaotalk" width={30} height={30} />
           </div>
-          <div>
+          <div className={`${flexColumnCenter} w-12 h-12 bg-white rounded cursor-pointer`}>
             <Image src="/sns/x.svg" alt="Kakaotalk" width={30} height={30} />
           </div>
         </div>
       </div>
-      <div className={`${flexRow} justify-between items-center justify-items-center h-[60px] mt-4 mb-6 px-4 bg-[#ECEEF2] rounded-lg`}>
+      <div className={`${flexRow} justify-between items-center justify-items-center h-[50px] mt-4 mb-6 px-4 bg-[#ECEEF2] rounded-lg`}>
         <div className={`${flexRow} gap-2`}>
           <Link href={articleData.artcPrevSeq !== 0 ? `/media/wiznews/${articleData.artcPrevSeq}` : "javascript:void(0);"}>
             <div>
-              <Button className="h-10" variant="default" onClick={onClickEvent}>
+              <Button className="h-8" variant="default" onClick={onClickEvent}>
                 <span className={`${flexRowCenter} text-xs gap-2`}><ArrowLeft />이전</span>
               </Button>
             </div>
           </Link>
           <Link href={articleData.artcNextSeq !== 0 ? `/media/wiznews/${articleData.artcNextSeq}` : "javascript:void(0);"}>
             <div>
-              <Button className="h-10" variant="default" onClick={onClickEvent}>
+              <Button className="h-8" variant="default" onClick={onClickEvent}>
                 <span className={`${flexRowCenter} text-xs gap-2`}>다음<ArrowRight /></span>
               </Button>
             </div>
@@ -62,7 +63,7 @@ const NewsArticle = ({articleData}: {articleData: any}) => {
         </div>
         <div>
           <Link href="/media/wiznews">
-            <Button className="h-10" variant="default" onClick={onClickEvent}>
+            <Button className="h-8" variant="default" onClick={onClickEvent}>
               <span className={`${flexRowCenter} text-xs gap-2`}><List />목록보기</span>
             </Button>
           </Link>

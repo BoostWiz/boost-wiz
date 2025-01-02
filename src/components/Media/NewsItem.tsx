@@ -5,7 +5,7 @@ import { convertDateString } from '@/shared/lib/convertDateString';
 import { CalendarDays, Eye } from 'lucide-react';
 import Link from 'next/link';
 
-const NewsPage = ({ newsData }: { newsData: any }) => {
+const NewsItem = ({ newsData }: { newsData: any }) => {
   return (
     <Link href={`/media/wiznews/${newsData.artcSeq}`} className={`${flexRow} h-[180px] gap-4 my-4 px-4 py-4 bg-[#ECEEF2] cursor-pointer rounded-lg shadow-sm shadow-slateGray`}>
       <div className={`${flexRowCenter} w-1/4 h-full`}>
@@ -19,14 +19,18 @@ const NewsPage = ({ newsData }: { newsData: any }) => {
           {toStringUsingDOMParser(newsData.artcContents)}
         </div>
         <div className={`${flexRow} justify-end h-6 gap-2`}>
-          <span className={`${flexRowCenter} text-xs text-slateGray`}><CalendarDays color="#717781"
-                                                                                    className="h-4" />{convertDateString(newsData.regDttm)}</span>
-          <span className={`${flexRowCenter} w-12 text-xs text-slateGray`}><Eye color="#717781"
-                                                                           className="h-4" />{newsData.viewCnt}</span>
+          <span className={`${flexRowCenter} text-xs text-slateGray`}>
+            <CalendarDays color="#717781" className="h-4" />
+            {convertDateString(newsData.regDttm)}
+          </span>
+          <span className={`${flexRowCenter} w-12 text-xs text-slateGray`}>
+            <Eye color="#717781" className="h-4" />
+            {newsData.viewCnt}
+          </span>
         </div>
       </div>
     </Link>
   );
 };
 
-export default NewsPage;
+export default NewsItem;
