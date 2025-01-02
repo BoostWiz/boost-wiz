@@ -5,7 +5,6 @@ import PitcherTop5 from './Pitcher/PitcherTop5';
 import KTPitcherTable from './Pitcher/KTPitcherTable';
 import PitcherTable from './Pitcher/PitcherTable';
 import {
-  flexRow,
   flexColumnCenter,
   flexRowSpaceBetween,
   flexRowCenter,
@@ -42,7 +41,7 @@ const PitcherRanking = () => {
 
   return (
     <div className={`${flexColumnCenter} w-full mt-4`}>
-      <div className={`${flexRow}`}>
+      <div className={`${flexRowSpaceBetween} w-full mb-4`}>
         <KTPitcherTop3 />
         <PitcherTop5 />
       </div>
@@ -91,6 +90,9 @@ const PitcherRanking = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="w-full mb-2 text-right text-sm text-gray">
+        ※ 각 항목을 클릭하면 순위를 볼 수 있습니다.
       </div>
       {selectedTable === tabsData[0] && <KTPitcherTable />}
       {selectedTable === tabsData[1] && <PitcherTable />}
