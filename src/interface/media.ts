@@ -2,13 +2,11 @@ export type NewsId =
   | 'wiz_news'
   | 'wiz_press'
 
-export interface NewsListData {
-  "artcContents": string;
+export interface NewsItemData {
   "artcSeq": number;
   "artcTitle": string;
+  "artcContents": string;
   "imgFilePath": string;
   "regDttm": number;
-  "updDttm": number;
-  "updr": string;
   "viewCnt": number;
 }

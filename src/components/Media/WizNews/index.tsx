@@ -2,12 +2,16 @@
 
 import { useMemo } from 'react';
 import { navData } from '@/shared/components/Header/constants';
-import { NewsId } from '@/interface/media';
+import { NewsId, NewsItemData } from '@/interface/media';
 import Header from '../Header';
-import NewsItem from '@/components/Media/NewsItem';
 import PaginationComponent from '@/shared/components/Pagination';
+import useGetNewsList from '@/api/media/useGetNewsList';
+import NewsItem from '@/components/Media/NewsItem';
 
-const WizNews = ({ newsId, newsData }: { newsId: NewsId, newsData: any }) => {
+const WizNews = ({ newsId }: { newsId: NewsId }) => {
+
+  const { newsData } = useGetNewsList(1);
+  console.log(newsData);
 
   const calculatedBreadList = useMemo(() => {
     const item = navData['media'].items_news.find((item) => item.id === newsId);
@@ -24,11 +28,9 @@ const WizNews = ({ newsId, newsData }: { newsId: NewsId, newsData: any }) => {
     <div className="container-default">
       <Header type="list" breadList={calculatedBreadList} />
       <div className="border-t-[2px] border-primary">
-        {
-          newsData.slice(0, 5).map((item: any) => (
-            <NewsItem newsData={item} />
-          ))
-        }
+        {newsData && newsData.map((newsItem: NewsItemData) => (
+          <NewsItem newsData={newsItem}/>
+        ))}
       </div>
       <div>
         <PaginationComponent/>

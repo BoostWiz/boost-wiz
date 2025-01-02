@@ -1,7 +1,6 @@
 import Banner from '@/shared/components/Banner';
 import WizNews from '@/components/Media/WizNews';
 import { navData } from '@/shared/components/Header/constants';
-import newsMockData from '@/mocks/data/wiznews.json';
 
 export default function WizNewsPage() {
   return (
@@ -13,7 +12,7 @@ export default function WizNewsPage() {
           navData={navData['media'].items_news}
         />
       </div>
-      <WizNews newsId={"wiz_news"} newsData={newsMockData.data.list} />
+      <WizNews newsId={"wiz_news"} />
     </section>
   );
 }

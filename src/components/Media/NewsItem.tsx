@@ -4,8 +4,9 @@ import { toStringUsingDOMParser } from '@/shared/lib/toStringUsingDOMParser';
 import { convertDateString } from '@/shared/lib/convertDateString';
 import { CalendarDays, Eye } from 'lucide-react';
 import Link from 'next/link';
+import { NewsItemData } from '@/interface/media';
 
-const NewsItem = ({ newsData }: { newsData: any }) => {
+const NewsItem = ({ newsData }: { newsData: NewsItemData }) => {
   return (
     <Link href={`/media/wiznews/${newsData.artcSeq}`} className={`${flexRow} h-[180px] gap-4 my-4 px-4 py-4 bg-[#ECEEF2] cursor-pointer rounded-lg shadow-sm shadow-slateGray`}>
       <div className={`${flexRowCenter} w-1/4 h-full`}>
