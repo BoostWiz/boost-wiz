@@ -5,14 +5,12 @@ import Image from 'next/image';
 import { Button } from '@/shared/components';
 import Link from 'next/link';
 import { replacePathToImgSrc } from '@/shared/lib/replacePathToImgSrc';
+import { NewsArticleData } from '@/interface/media';
 
-const NewsArticle = ({articleData}: {articleData: any}) => {
+const NewsArticle = ({articleData}: {articleData: NewsArticleData}) => {
 
   const htmlString = articleData.artcContents;
   const baseUrl = "https://www.ktwiz.co.kr";
-
-  const onClickEvent = () => {
-  };
 
   return (
     <div>
@@ -48,14 +46,14 @@ const NewsArticle = ({articleData}: {articleData: any}) => {
         <div className={`${flexRow} gap-2`}>
           <Link href={articleData.artcPrevSeq !== 0 ? `/media/wiznews/${articleData.artcPrevSeq}` : "javascript:void(0);"}>
             <div>
-              <Button className="h-8" variant="default" onClick={onClickEvent}>
+              <Button className="h-8" variant="default">
                 <span className={`${flexRowCenter} text-xs gap-2`}><ArrowLeft />이전</span>
               </Button>
             </div>
           </Link>
           <Link href={articleData.artcNextSeq !== 0 ? `/media/wiznews/${articleData.artcNextSeq}` : "javascript:void(0);"}>
             <div>
-              <Button className="h-8" variant="default" onClick={onClickEvent}>
+              <Button className="h-8" variant="default">
                 <span className={`${flexRowCenter} text-xs gap-2`}>다음<ArrowRight /></span>
               </Button>
             </div>
@@ -63,7 +61,7 @@ const NewsArticle = ({articleData}: {articleData: any}) => {
         </div>
         <div>
           <Link href="/media/wiznews">
-            <Button className="h-8" variant="default" onClick={onClickEvent}>
+            <Button className="h-8" variant="default">
               <span className={`${flexRowCenter} text-xs gap-2`}><List />목록보기</span>
             </Button>
           </Link>

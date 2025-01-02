@@ -11,7 +11,6 @@ import NewsItem from '@/components/Media/NewsItem';
 const WizNews = ({ newsId }: { newsId: NewsId }) => {
 
   const { newsData } = useGetNewsList(1);
-  console.log(newsData);
 
   const calculatedBreadList = useMemo(() => {
     const item = navData['media'].items_news.find((item) => item.id === newsId);
