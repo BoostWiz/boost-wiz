@@ -1,11 +1,10 @@
 import Banner from '@/shared/components/Banner';
 import { navData } from '@/shared/components/Header/constants';
 import WizNewsArticle from '@/components/Media/WizNewsArticle';
-import newsMockData from '@/mocks/data/wiznews.json';
 
 export default async function WizNewsArticlePage(
   { params }: {
-    params: Promise<{ id: string }>;
+    params: Promise<{ id: number }>;
   },
 ) {
 
@@ -21,7 +20,7 @@ export default async function WizNewsArticlePage(
         />
       </div>
       <div>
-        <WizNewsArticle newsId="wiz_news" articleId={id} newsData={newsMockData.data.list}/>
+        <WizNewsArticle newsId="wiz_news" articleId={id} />
       </div>
     </section>
   );
