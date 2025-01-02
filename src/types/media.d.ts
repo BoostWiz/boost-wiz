@@ -20,7 +20,7 @@ interface HighlightItem {
   viewCnt: number;
 }
 
-interface HighlightResponse {
+interface WizStoryContainerProps {
   data: {
     list: HighlightItem[];
   };
