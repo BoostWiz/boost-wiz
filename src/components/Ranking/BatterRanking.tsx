@@ -5,7 +5,6 @@ import BatterTop5 from './Batter/BatterTop5';
 import KTBatterTable from './Batter/KTBatterTable';
 import BatterTable from './Batter/BatterTable';
 import {
-  flexRow,
   flexColumnCenter,
   flexRowSpaceBetween,
   flexRowCenter,
@@ -42,7 +41,7 @@ const BatterRanking = () => {
 
   return (
     <div className={`${flexColumnCenter} w-full mt-4`}>
-      <div className={`${flexRow}`}>
+      <div className={`${flexRowSpaceBetween} w-full mb-4`}>
         <KTBatterTop3 />
         <BatterTop5 />
       </div>
