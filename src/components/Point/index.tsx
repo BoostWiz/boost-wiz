@@ -3,6 +3,7 @@ import PitcherMatchup from './PitcherMatchup';
 import LineUp from './LineUp';
 import ChannelInfo from './ChannelInfo';
 import WeatherInfo from './WeatherInfo';
+import { flexRowSpaceBetween } from '@/styles/flex';
 import pointData from '@/mocks/data/pointData.json';
 
 const Point = () => {
@@ -16,9 +17,22 @@ const Point = () => {
           homePitcher={pointData.data.homePitcher}
           visitPitcher={pointData.data.visitPitcher}
         />
-        <LineUp />
-        <div>
-          <ChannelInfo />
+        <LineUp
+          homeInfo={{
+            teamName: pointData.data.gameScore.home,
+            teamLogo: pointData.data.gameScore.homeLogo,
+          }}
+          visitInfo={{
+            teamName: pointData.data.gameScore.visit,
+            teamLogo: pointData.data.gameScore.visitLogo,
+          }}
+          homeLineup={pointData.data.homeLineup}
+          visitLineup={pointData.data.visitLineup}
+        />
+        <div className={`${flexRowSpaceBetween} my-10`}>
+          <ChannelInfo
+            broadcastInfo={pointData.data.schedule.current.broadcast}
+          />
           <WeatherInfo />
         </div>
       </div>

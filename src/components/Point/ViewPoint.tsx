@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ViewPoint = ({ gameData }: any) => {
   return (
-    <div className={`${flexRow} h-[350px] bg-[#ECEEF2]/30 px-4`}>
+    <div className={`${flexRow} h-[330px] bg-[#ECEEF2]/30 px-4`}>
       {/* 전날 경기 */}
       <div className={`${flexColumnCenter} h-full sm:w-[5%] w-[10%]`}>
         <ChevronLeft size={50} />

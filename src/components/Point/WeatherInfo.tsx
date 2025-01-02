@@ -1,7 +1,9 @@
+import GameInformationTitle from '../Game/GameInformationTitle';
+
 const WeatherInfo = () => {
   return (
-    <div>
-      <p>홈구장 날씨</p>
+    <div className="w-[50%]">
+      <GameInformationTitle titleText="날씨 정보" />
     </div>
   );
 };

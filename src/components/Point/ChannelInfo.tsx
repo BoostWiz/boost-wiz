@@ -1,7 +1,10 @@
-const ChannelInfo = () => {
+import GameInformationTitle from '../Game/GameInformationTitle';
+
+const ChannelInfo = ({ broadcastInfo }: any) => {
   return (
-    <div>
-      <p>중계 채널</p>
+    <div className="w-[50%]">
+      <GameInformationTitle titleText="중계 채널" />
+      <p className="mt-4">{broadcastInfo}</p>
     </div>
   );
 };

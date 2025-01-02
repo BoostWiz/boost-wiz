@@ -34,9 +34,9 @@ const PitcherMatchup = ({
     '자책점',
   ];
   return (
-    <div className="w-full my-6">
+    <div className="w-full my-10">
       <GameInformationTitle titleText="선발투수 비교" />
-      <Table className="mt-4">
+      <Table className="mt-6">
         <TableHeader>
           <TableRow>
             {headerContents.map((headerName) => (
