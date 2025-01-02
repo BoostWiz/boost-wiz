@@ -34,14 +34,20 @@ const CardSchedule = ({ isCenter = false, data }: ScheduleCardProps) => {
                 height={75}
               />
               <span>{data.homeKey}</span>
-              <span className="text-sm text-slateGray">선발:</span>
+              <span className="text-sm text-primary">H</span>
             </div>
 
             <div className={`${flexColumnCenter} gap-8`}>
               <span className="sm:text-xl">
                 {data.visitScore} : {data.homeScore}
               </span>
-              <span className="text-primary text-xl">승</span>
+              <span
+                className={`${
+                  data.outcome === '승' ? 'text-primary' : 'text-turquoise'
+                } text-xl`}
+              >
+                {data.outcome}
+              </span>
               <Link href="/">
                 <div
                   className={`${flexRowCenter} px-2 py-1 bg-turquoise rounded-3xl`}
@@ -59,7 +65,7 @@ const CardSchedule = ({ isCenter = false, data }: ScheduleCardProps) => {
                 height={75}
               />
               <span>{data.visitKey}</span>
-              <span className="text-sm text-slateGray">선발:</span>
+              <span className="text-sm text-turquoise">A</span>
             </div>
           </div>
         </>
