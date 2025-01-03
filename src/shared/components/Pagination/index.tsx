@@ -114,7 +114,7 @@ const PaginationFooter = ({ totalPages, currentPage, handlePage, searchPageUrl}:
                 onClick={() =>
                   handlePage(Number(page))}
               >
-                <Link href={`${searchPageUrl}=${page}`}>
+                <Link href={`/${searchPageUrl}=${page}`}>
                   {page}
                 </Link>
               </PaginationLink>

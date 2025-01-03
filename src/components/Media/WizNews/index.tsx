@@ -48,7 +48,7 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
           totalPages={calculatedPageList(totalPages)}
           currentPage={currentPage}
           handlePage={setCurrentPage}
-          searchPageUrl={"/media/wiznews?search-page"}/>
+          searchPageUrl={"media/wiznews?search-page"}/>
       </div>
     </div>
   );
