@@ -1,3 +1,5 @@
+import Point from '@/components/Point';
+
 // todos: banner 수정
 export default function PointPage() {
   return (
@@ -8,6 +10,7 @@ export default function PointPage() {
           description="박스스코어 정보를 알려드립니다."
         /> */}
       </div>
+      <Point />
     </section>
   );
 }
