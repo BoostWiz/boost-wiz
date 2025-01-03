@@ -5,12 +5,19 @@ import { useMemo } from 'react';
 
 import Header from './Header';
 import { navData } from '@/shared/components/Header/constants';
-import { PlayerDetailType, PlayerIdType } from '@/interface/player';
+import {
+  PlayerDetailType,
+  PlayerIdType,
+  PlayerIdWithoutCheerleader,
+} from '@/interface/player';
 import useGetPlayer from '@/api/player/useGetPlayer';
 import { flexRowCenter } from '@/styles/flex';
 
 const Player = ({ playerId }: { playerId: PlayerIdType }) => {
-  const playerDetailKeyData: Record<PlayerIdType, PlayerDetailType> = {
+  const playerDetailKeyData: Record<
+    PlayerIdWithoutCheerleader,
+    PlayerDetailType
+  > = {
     coachlist: 'coachdetail',
     pitcherlist: 'pitcherdetail',
     catcherlist: 'catcherdetail',
@@ -38,7 +45,9 @@ const Player = ({ playerId }: { playerId: PlayerIdType }) => {
           {players ? (
             <InfoList
               data={players}
-              playerDetailType={playerDetailKeyData[playerId]}
+              playerDetailType={
+                playerDetailKeyData[playerId as PlayerIdWithoutCheerleader]
+              }
             />
           ) : (
             <div className={`${flexRowCenter}`}>데이터 준비중입니다...</div>

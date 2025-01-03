@@ -7,8 +7,8 @@ const useGetNewsList = (pageNum: number) => {
     queryKey: ['newsData', pageNum],
     queryFn: async () => {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/article/newslistpage?searchWord=&itemCount=5&pageNum=${pageNum}`,
-        );
+        `/api/article/newslistpage?searchWord=&itemCount=5&pageNum=${pageNum}`,
+      );
 
       return response.data.data.list.map((d: NewsItemData) => {
         return {

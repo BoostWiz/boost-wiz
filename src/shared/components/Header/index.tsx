@@ -55,7 +55,7 @@ const Header = () => {
             {Object.entries(navData).map(([key, nav]) => {
               return (
                 <li
-                  id={key}
+                  key={key}
                   className={`${
                     isHover ? hoverCss['nav'] : currentCss['nav']
                   } w-[90px] text-center font-bold transition-colors duration-300`}

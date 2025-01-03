@@ -2,7 +2,10 @@ export type PlayerIdType =
   | 'coachlist'
   | 'pitcherlist'
   | 'catcherlist'
-  | 'infielderlist';
+  | 'infielderlist'
+  | 'cheerleader';
+
+export type PlayerIdWithoutCheerleader = Exclude<PlayerIdType, 'cheerleader'>;
 
 export type PlayerDetailType =
   | 'coachdetail'
@@ -82,4 +85,36 @@ export interface PlayerInfoDetailType {
   teamCode: string;
   teamName: string;
   weight: string;
+}
+
+export interface CheerleaderType {
+  delYn: string;
+  imgPath: string;
+  imgPrvwPath: string;
+  leaderBirthDay: string;
+  leaderBloodGroups: string;
+  leaderCareer: string;
+  leaderEngName: string;
+  leaderGreeting: string;
+  leaderHeight: string;
+  leaderHobby: string;
+  leaderLikePlayer: string;
+  leaderMotto: string;
+  leaderName: string;
+  leaderNickName: string;
+  leaderPosition: string;
+  leaderSeq: number;
+  leaderType: string;
+  listImgPath: string;
+  regDttm: number;
+  regr: string;
+  snsId: string;
+  snsMemberId: string;
+  thumbOffImgPath: string;
+  thumbOnImgPath: string;
+  titleImgPath: string;
+  updDttm: number;
+  updr: string;
+  webviewDetailImgPath: string;
+  webviewListImgPath: string;
 }

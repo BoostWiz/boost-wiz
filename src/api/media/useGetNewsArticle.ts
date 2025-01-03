@@ -6,8 +6,8 @@ const useGetNewsArticle = (pageId: number) => {
     queryKey: ['newsArticleData', pageId],
     queryFn: async () => {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/article/newsdetail?artcSeq=${pageId}`,
-        );
+        `/api/article/newsdetail?artcSeq=${pageId}`,
+      );
 
       return response.data.data.article
     },

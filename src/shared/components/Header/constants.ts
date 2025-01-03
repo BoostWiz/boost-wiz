@@ -35,10 +35,10 @@ export const navData = {
     router: '/player',
     items: [
       { id: 'coachlist', text: '코칭스텝', router: '/player/coachlist' },
-      { id: 'pitchepitcherlistr', text: '투수', router: '/player/pitcher' },
+      { id: 'pitcherlist', text: '투수', router: '/player/pitcher' },
       { id: 'catcherlist', text: '포수', router: '/player/batter' },
       { id: 'infielderlist', text: '내야수', router: '/player/infielderlist' },
-      { id: 'cheerleader', text: '응원단', router: '/player/cheersquad' },
+      { id: 'cheerleader', text: '응원단', router: '/player/cheerleader' },
     ],
   },
   media: {
@@ -46,7 +46,7 @@ export const navData = {
     router: '/media',
     items: [
       { id: 'wiz_news', text: 'wiz 뉴스', router: '/media/wiznews' },
-      { id: 'wiz_story', text: 'wiz 스토리', router: '/media/bstory' },
+      { id: 'wiz_story', text: 'wiz 티비', router: '/media/wiztv' },
       { id: 'thrower_info', text: '시구자 정보', router: '/media/info' },
       { id: 'wiz_photo', text: 'wiz 포토', router: '/media/photo' },
     ],
