@@ -25,7 +25,7 @@ const InfoList = () => {
   };
 
   const visiblePlayers = useMemo(() => {
-    return players.slice(currentIndex, currentIndex + itemsToShow);
+    if (players) return players.slice(currentIndex, currentIndex + itemsToShow);
   }, [players]);
 
   useEffect(() => {
