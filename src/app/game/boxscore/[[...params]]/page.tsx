@@ -7,9 +7,10 @@ import { useState, useEffect } from 'react';
 import { keyDataType, boxscoreType } from '@/interface/boxscore';
 
 interface PageProps {
-  params: keyDataType;
+  params: Promise<{
+    params?: string[];
+  }>;
 }
-
 // todos: banner 수정
 export default function BoxScorePage({ params }: PageProps) {
   const [gameData, setGameData] = useState<keyDataType | null>(null);
@@ -17,11 +18,20 @@ export default function BoxScorePage({ params }: PageProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (params?.gameDate) {
-      setGameData(params);
-    } else {
-      getLatestGame().then(setGameData);
-    }
+    const initializeData = async () => {
+      const resolvedParams = await params;
+      if (resolvedParams.params && resolvedParams.params.length > 0) {
+        const extractedParams: keyDataType = {
+          gameDate: resolvedParams.params[0],
+          gmkey: resolvedParams.params[1],
+        };
+        setGameData(extractedParams);
+      } else {
+        getLatestGame().then(setGameData);
+      }
+    };
+
+    initializeData();
   }, [params]);
 
   useEffect(() => {
