@@ -14,15 +14,11 @@ const HighLights = ({ highLightInfo }: propsType) => {
       <div className="my-4">
         <Separator />
         {/* 타입 지정 수정 필요 */}
-        {highLightInfo.map((info: any) => {
+        {highLightInfo.map((info: any, idx: any) => {
           if (info.how === '결승타') {
             return (
-              <div>
-                <DataLine
-                  key={info.how}
-                  dataType={info.how}
-                  dataValue={info.result}
-                />
+              <div key={idx}>
+                <DataLine dataType={info.how} dataValue={info.result} />
                 <Separator />
               </div>
             );
@@ -30,22 +26,14 @@ const HighLights = ({ highLightInfo }: propsType) => {
 
           if (info.how === '심판') {
             return (
-              <div>
+              <div key={idx}>
                 <Separator />
-                <DataLine
-                  key={info.how}
-                  dataType={info.how}
-                  dataValue={info.result}
-                />
+                <DataLine dataType={info.how} dataValue={info.result} />
               </div>
             );
           }
           return (
-            <DataLine
-              key={info.how}
-              dataType={info.how}
-              dataValue={info.result}
-            />
+            <DataLine key={idx} dataType={info.how} dataValue={info.result} />
           );
         })}
       </div>

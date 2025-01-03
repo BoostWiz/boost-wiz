@@ -8,27 +8,60 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components';
+import {
+  scheduleInfoType,
+  scoreboardType,
+  keyDataType,
+} from '@/interface/boxscore';
 
 // 박스스코어 제일 위에 위치한 경기 정보 요약이 들어가는 컴포넌트
 // todos: 타입 지정, (승리,패전)/(선발) 투수 정보
 
 interface propsType {
-  schedule: any;
-  scoreboard: any;
+  schedule: {
+    current: scheduleInfoType;
+    next: scheduleInfoType;
+    prev: scheduleInfoType;
+  };
+  scoreboard: scoreboardType[];
   maxInning: number;
+  setGameData: React.Dispatch<React.SetStateAction<keyDataType | null>>;
 }
 
-const TotalScore = ({ schedule, scoreboard, maxInning }: propsType) => {
+const TotalScore = ({
+  schedule,
+  scoreboard,
+  maxInning,
+  setGameData,
+}: propsType) => {
   // 게임 날짜 나눠서 출력하는 함수
-  const formatGameDate = (gameDate: any) => {
+  const formatGameDate = (gameDate: number) => {
     const date = String(gameDate);
     return `${date.slice(0, 4)}.${date.slice(4, 6)}.${date.slice(6, 8)}`;
+  };
+
+  const handleClickNextButton = () => {
+    if (schedule.next == undefined) {
+      return;
+    }
+    setGameData({
+      gameDate: String(schedule.next.gameDate),
+      gmkey: schedule.next.gmkey,
+    });
   };
 
   return (
     <div className={`${flexRow} h-[250px] bg-[#ECEEF2]/50`}>
       {/* 전날 경기 */}
-      <div className={`${flexColumnCenter} h-full sm:w-[5%] w-[10%]`}>
+      <div
+        onClick={() =>
+          setGameData({
+            gameDate: String(schedule.prev.gameDate),
+            gmkey: schedule.prev.gmkey,
+          })
+        }
+        className={`${flexColumnCenter} h-full sm:w-[5%] w-[10%] hover:cursor-pointer`}
+      >
         <ChevronLeft size={50} />
       </div>
       <div className={`${flexColumnCenter} h-full sm:w-[90%] w-[80%]`}>
@@ -36,8 +69,8 @@ const TotalScore = ({ schedule, scoreboard, maxInning }: propsType) => {
           {/* 첫번째팀 정보 */}
           <div className={`${flexRowCenter} w-[35%] h-full`}>
             <div className={`${flexColumnCenter} w-[30%] h-full`}>
-              <p className="text-2xl font-bold">{schedule.current.home}</p>
-              <p className="text-sm">승 - 김민</p>
+              <p className="text-4xl font-bold mt-4">{schedule.current.home}</p>
+              <p className="text-sm text-gray">(홈)</p>
             </div>
             <div className="w-[30%] text-center">
               <img src={schedule.current.homeLogo} />
@@ -62,8 +95,10 @@ const TotalScore = ({ schedule, scoreboard, maxInning }: propsType) => {
               <img src={schedule.current.visitLogo} />
             </div>
             <div className={`${flexColumnCenter} w-[30%] h-full`}>
-              <p className="text-2xl font-bold">{schedule.current.visit}</p>
-              <p className="text-sm">패 - 최원태</p>
+              <p className="text-4xl font-bold mt-4">
+                {schedule.current.visit}
+              </p>
+              <p className="text-sm text-gray">(원정)</p>
             </div>
           </div>
         </div>
@@ -95,9 +130,8 @@ const TotalScore = ({ schedule, scoreboard, maxInning }: propsType) => {
               </TableRow>
             </TableHeader>
             <TableBody className="bg-white">
-              {/* 타입 수정 필요함 */}
-              {scoreboard.map((team: any) => (
-                <TableRow key={team}>
+              {scoreboard.map((team: any, idx) => (
+                <TableRow key={idx}>
                   <TableCell className="p-1 whitespace-nowrap w-20">
                     {team.bhomeName}
                   </TableCell>
@@ -126,9 +160,14 @@ const TotalScore = ({ schedule, scoreboard, maxInning }: propsType) => {
           </Table>
         </div>
       </div>
-      {/* 다음 경기 */}
-      <div className={`${flexColumnCenter} h-full sm:w-[5%] w-[10%]`}>
-        <ChevronRight size={50} />
+      <div
+        onClick={() => handleClickNextButton()}
+        className={`${flexColumnCenter} h-full sm:w-[5%] w-[10%] ${schedule.next == undefined ? '' : 'hover:cursor-pointer'} `}
+      >
+        <ChevronRight
+          size={50}
+          className={schedule.next == undefined ? 'stroke-gray' : ''}
+        />
       </div>
     </div>
   );
