@@ -1,8 +1,27 @@
 import GameInformationTitle from '../Game/GameInformationTitle';
 import { flexRowCenter } from '@/styles/flex';
 import LineUpImage from './LineUpImage';
+import { player } from '@/interface/point';
 
-const LineUp = ({ homeInfo, visitInfo, homeLineup, visitLineup }: any) => {
+interface propsType {
+  homeInfo: {
+    teamName: string;
+    teamLogo: string;
+  };
+  visitInfo: {
+    teamName: string;
+    teamLogo: string;
+  };
+  homeLineup: player[];
+  visitLineup: player[];
+}
+
+const LineUp = ({
+  homeInfo,
+  visitInfo,
+  homeLineup,
+  visitLineup,
+}: propsType) => {
   return (
     <div className="w-full my-10">
       <GameInformationTitle titleText="라인업" />

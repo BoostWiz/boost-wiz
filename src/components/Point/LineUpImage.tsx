@@ -1,6 +1,15 @@
 import { flexColumnCenter, flexRowCenter } from '@/styles/flex';
+import { player } from '@/interface/point';
 
-const LineUpImage = ({ teamInfo, lineupInfo }: any) => {
+interface propsType {
+  teamInfo: {
+    teamName: string;
+    teamLogo: string;
+  };
+  lineupInfo: player[];
+}
+
+const LineUpImage = ({ teamInfo, lineupInfo }: propsType) => {
   return (
     <div className={`${flexColumnCenter} w-full`}>
       <div className={`${flexRowCenter} pr-4`}>
@@ -13,7 +22,7 @@ const LineUpImage = ({ teamInfo, lineupInfo }: any) => {
           alt="야구장이미지"
           className="w-full"
         />
-        {lineupInfo.map((player: any) => (
+        {lineupInfo.map((player: player) => (
           <LineupLabel playerInfo={player} key={player.backnum} />
         ))}
       </div>
@@ -34,7 +43,7 @@ const position = {
   D: 'bottom-12 right-0',
 };
 
-const LineupLabel = ({ playerInfo }: any) => {
+const LineupLabel = ({ playerInfo }: { playerInfo: player }) => {
   return (
     <div
       className={`absolute ${position[playerInfo.posidName]} bg-[#ECEEF2]/80 w-[100px] h-[26px] text-center text-xs border-l border-l-[#D60C0C] rounded border-l-4`}

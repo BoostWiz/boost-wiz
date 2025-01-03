@@ -1,6 +1,6 @@
 import GameInformationTitle from '../Game/GameInformationTitle';
 
-const ChannelInfo = ({ broadcastInfo }: any) => {
+const ChannelInfo = ({ broadcastInfo }: { broadcastInfo: string }) => {
   return (
     <div className="w-[50%]">
       <GameInformationTitle titleText="중계 채널" />

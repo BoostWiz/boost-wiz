@@ -4,35 +4,36 @@ import LineUp from './LineUp';
 import ChannelInfo from './ChannelInfo';
 import WeatherInfo from './WeatherInfo';
 import { flexRowSpaceBetween } from '@/styles/flex';
-import pointData from '@/mocks/data/pointData.json';
+import { pointType } from '@/interface/point';
+import pointJSON from '@/mocks/data/pointData.json';
 
 const Point = () => {
+  const pointData: pointType = pointJSON.data as pointType;
+
   return (
     <div className="container-default">
       <div className="border-t-[2px] border-primary">
-        <ViewPoint gameData={pointData.data} />
+        <ViewPoint gameData={pointData} />
         <PitcherMatchup
-          homeName={pointData.data.gameScore.home}
-          visitName={pointData.data.gameScore.visit}
-          homePitcher={pointData.data.homePitcher}
-          visitPitcher={pointData.data.visitPitcher}
+          homeName={pointData.gameScore.home}
+          visitName={pointData.gameScore.visit}
+          homePitcher={pointData.homePitcher}
+          visitPitcher={pointData.visitPitcher}
         />
         <LineUp
           homeInfo={{
-            teamName: pointData.data.gameScore.home,
-            teamLogo: pointData.data.gameScore.homeLogo,
+            teamName: pointData.gameScore.home,
+            teamLogo: pointData.gameScore.homeLogo,
           }}
           visitInfo={{
-            teamName: pointData.data.gameScore.visit,
-            teamLogo: pointData.data.gameScore.visitLogo,
+            teamName: pointData.gameScore.visit,
+            teamLogo: pointData.gameScore.visitLogo,
           }}
-          homeLineup={pointData.data.homeLineup}
-          visitLineup={pointData.data.visitLineup}
+          homeLineup={pointData.homeLineup}
+          visitLineup={pointData.visitLineup}
         />
         <div className={`${flexRowSpaceBetween} my-10`}>
-          <ChannelInfo
-            broadcastInfo={pointData.data.schedule.current.broadcast}
-          />
+          <ChannelInfo broadcastInfo={pointData.schedule.current.broadcast} />
           <WeatherInfo />
         </div>
       </div>

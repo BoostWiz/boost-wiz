@@ -7,13 +7,21 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components';
+import { lineupPitcher } from '@/interface/point';
+
+interface propsType {
+  homeName: string;
+  visitName: string;
+  homePitcher: lineupPitcher;
+  visitPitcher: lineupPitcher;
+}
 
 const PitcherMatchup = ({
   homeName,
   visitName,
   homePitcher,
   visitPitcher,
-}: any) => {
+}: propsType) => {
   const headerContents = [
     '팀',
     '이름',

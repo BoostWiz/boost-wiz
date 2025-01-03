@@ -1,7 +1,12 @@
 import { flexColumnCenter, flexRow, flexRowCenter } from '@/styles/flex';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { pointType } from '@/interface/point';
 
-const ViewPoint = ({ gameData }: any) => {
+interface propsType {
+  gameData: pointType;
+}
+
+const ViewPoint = ({ gameData }: propsType) => {
   return (
     <div className={`${flexRow} h-[330px] bg-[#ECEEF2]/30 px-4`}>
       {/* 전날 경기 */}
@@ -53,7 +58,7 @@ const ViewPoint = ({ gameData }: any) => {
               <div
                 className={`h-2 bg-[#D60C0C] rounded`}
                 style={{
-                  width: `${Math.floor(gameData.homeTeamRank.lra * 100)}px`,
+                  width: `${Math.floor(Number(gameData.homeTeamRank.lra) * 100)}px`,
                 }}
               />
               <p>{gameData.homeTeamRank.lra}</p>
@@ -73,7 +78,7 @@ const ViewPoint = ({ gameData }: any) => {
               <div
                 className={`h-2 bg-[#D60C0C] rounded`}
                 style={{
-                  width: `${Math.floor(gameData.visitTeamRank.lra * 100)}px`,
+                  width: `${Math.floor(Number(gameData.visitTeamRank.lra) * 100)}px`,
                 }}
               />
             </div>
