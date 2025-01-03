@@ -10,7 +10,7 @@ const useGetPlayerDetail = (
     queryKey: ['players', pcode, playerDetailType],
     queryFn: async () => {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/player/${playerDetailType}?pcode=${pcode}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/player/${playerDetailType}?pcode=${pcode}`,
       );
 
       if (playerDetailType === 'coachdetail') {

@@ -7,8 +7,8 @@ const useGetNewsList = (pageNum: number) => {
     queryKey: ['newsData', pageNum],
     queryFn: async () => {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/article/newslistpage?searchWord=&itemCount=5&pageNum=${pageNum}`,
-        );
+        `${process.env.NEXT_PUBLIC_API_URL}/api/article/newslistpage?searchWord=&itemCount=5&pageNum=${pageNum}`,
+      );
 
       return response.data.data.list.map((d: NewsItemData) => {
         return {
@@ -17,13 +17,13 @@ const useGetNewsList = (pageNum: number) => {
           artcContents: d.artcContents,
           imgFilePath: d.imgFilePath,
           regDttm: d.regDttm,
-          viewCnt:d.viewCnt,
+          viewCnt: d.viewCnt,
         };
       });
     },
   });
 
-  return { newsData: data }
+  return { newsData: data };
 };
 
 export default useGetNewsList;

@@ -13,7 +13,7 @@ const useGetPlayer = (playerId: PlayerIdType) => {
     queryKey: ['player', playerId],
     queryFn: async () => {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/player/${playerId}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/player/${playerId}`,
       );
 
       if (playerId === 'coachlist') {

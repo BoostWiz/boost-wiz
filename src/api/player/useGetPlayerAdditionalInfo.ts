@@ -11,7 +11,7 @@ const useGetPlayerAdditionalInfo = (
     queryKey: ['playerAdditionalInfo', playerName],
     queryFn: async () => {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/additionalInfo?team=${team}&player=${playerName}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/additionalInfo?team=${team}&player=${playerName}`,
       );
 
       if (playerDetailType === 'pitcherdetail') {

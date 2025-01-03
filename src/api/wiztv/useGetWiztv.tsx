@@ -16,7 +16,7 @@ export async function fetchHLVideo(
   });
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/article/wizhighlightlistpage?${queryParams}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/article/wizhighlightlistpage?${queryParams}`,
     {
       method: 'GET',
     },
