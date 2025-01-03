@@ -12,9 +12,7 @@ const useGetPlayer = (playerId: PlayerIdType) => {
   const { data } = useQuery({
     queryKey: ['player', playerId],
     queryFn: async () => {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/player/${playerId}`,
-      );
+      const response = await axios.get(`/api/player/${playerId}`);
 
       if (playerId === 'coachlist') {
         return response.data.data.list.map((d: PlayerType) => {

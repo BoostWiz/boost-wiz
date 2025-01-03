@@ -10,7 +10,7 @@ const useGetSchedule = () => {
     queryKey: ['yearMonthSchedule', yearMonth],
     queryFn: async () => {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/game/monthschedule?yearMonth=${yearMonth}`,
+        `/api/game/monthschedule?yearMonth=${yearMonth}`,
       );
 
       return response.data.data.list;
