@@ -45,10 +45,14 @@ export const navData = {
     text: 'Media',
     router: '/media',
     items: [
-      { id: 'wiz_news', text: 'wiz 뉴스', router: '/media/news' },
+      { id: 'wiz_news', text: 'wiz 뉴스', router: '/media/wiznews' },
       { id: 'wiz_story', text: 'wiz 스토리', router: '/media/bstory' },
       { id: 'thrower_info', text: '시구자 정보', router: '/media/info' },
       { id: 'wiz_photo', text: 'wiz 포토', router: '/media/photo' },
+    ],
+    items_news: [
+      { id: 'wiz_news', text: 'wiz 뉴스', router: '/media/wiznews' },
+      { id: 'wiz_press', text: 'wiz 보도자료', router: '/media/wizpress' },
     ],
   },
 };
