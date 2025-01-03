@@ -45,7 +45,7 @@ export const navData = {
     text: 'Media',
     router: '/media',
     items: [
-      { id: 'wiz_news', text: 'wiz 뉴스', router: '/media/news' },
+      { id: 'wiz_news', text: 'wiz 뉴스', router: '/media/wiznews' },
       { id: 'wiz_story', text: 'wiz 티비', router: '/media/wiztv' },
       { id: 'thrower_info', text: '시구자 정보', router: '/media/info' },
       { id: 'wiz_photo', text: 'wiz 포토', router: '/media/photo' },
