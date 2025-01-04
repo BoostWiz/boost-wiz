@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { navData } from '@/shared/components/Header/constants';
 import { NewsId, NewsItemData } from '@/interface/media';
 import Header from '../Header';
@@ -8,12 +8,19 @@ import PaginationFooter from '@/shared/components/Pagination';
 import useGetNewsList from '@/api/media/useGetNewsList';
 import NewsItem from '@/components/Media/NewsItem';
 import useGetNewsSearchCount from '@/api/media/useGetNewsSearchCount';
+import { useSearchParams } from 'next/navigation';
 
 const WizNews = ({ newsId }: { newsId: NewsId }) => {
 
+  const q = useSearchParams().get("search-page") || 1;
+
   const [currentPage, setCurrentPage] = useState(1);
   const { newsData } = useGetNewsList(currentPage);
-  const totalPages = useGetNewsSearchCount().totalPage;
+  const totalPages = useGetNewsSearchCount().totalPage
+
+  useEffect(() => {
+    setCurrentPage(Number(q));
+  }, [q, currentPage]);
 
   const calculatedBreadList = useMemo(() => {
     const item = navData['media'].items_news.find((item) => item.id === newsId);
