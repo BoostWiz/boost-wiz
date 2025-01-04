@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { navData } from '@/shared/components/Header/constants';
 import { NewsId, NewsItemData } from '@/interface/media';
 import Header from '../Header';
@@ -14,7 +14,6 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const { newsData } = useGetNewsList(currentPage);
   const totalPages = useGetNewsSearchCount().totalPage;
-
 
   const calculatedBreadList = useMemo(() => {
     const item = navData['media'].items_news.find((item) => item.id === newsId);
@@ -31,10 +30,6 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
     return Math.round(totalPages / 5);
   }
 
-  useEffect(() => {
-
-  }, [currentPage])
-
   return (
     <div className="container-default">
       <Header type="list" breadList={calculatedBreadList} />
@@ -43,7 +38,7 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
           <NewsItem newsData={newsItem}/>
         ))}
       </div>
-      <div>
+      <div className="mt-10">
         <PaginationFooter
           totalPages={calculatedPageList(totalPages)}
           currentPage={currentPage}
