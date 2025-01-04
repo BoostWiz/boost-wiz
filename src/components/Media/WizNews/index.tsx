@@ -24,7 +24,7 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
 
   const calculatedBreadList = useMemo(() => {
     const item = navData['media'].items_news.find((item) => item.id === newsId);
-    const breadList = [{ text: 'media', router: '/media' }];
+    const breadList = [{ text: 'media', router: '/media/wiznews' }];
 
     if (item) {
       breadList.push({ text: item.text, router: item.router });
