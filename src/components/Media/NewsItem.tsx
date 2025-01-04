@@ -12,8 +12,8 @@ const NewsItem = ({ newsData }: { newsData: NewsItemData }) => {
       <div className={`${flexRowCenter} w-1/4 h-full`}>
         {
           newsData.imgFilePath ?
-            (<Image src={newsData.imgFilePath} className={"rounded-lg h-[140px] shadow-xl"} alt={newsData.artcTitle} width="350" height="250" quality={75} />) :
-            (<Image src="/images/media/news_thumb.png" className={"rounded-lg h-[140px] shadow-xl"} alt={newsData.artcTitle} width="350" height="250" quality={75} />)
+            (<Image src={newsData.imgFilePath} className={"rounded-lg h-[140px] min-w-[250px] shadow-xl"} alt={newsData.artcTitle} width="350" height="250" quality={75} />) :
+            (<Image src="/images/media/news_thumb.png" className={"rounded-lg h-[140px] min-w-[250px] shadow-xl"} alt={newsData.artcTitle} width="350" height="250" quality={75} />)
         }
       </div>
       <div className={`${flexColumn} justify-center w-4/5 h-full gap-2`}>
