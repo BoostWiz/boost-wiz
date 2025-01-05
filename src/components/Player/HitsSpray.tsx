@@ -4,6 +4,7 @@ import {
   HitsSprayCourseData,
   PlayerDetailType,
 } from '@/interface/player';
+import { flexRowCenter } from '@/styles/flex';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -82,7 +83,11 @@ const HitsSpray = ({ playerName, playerDetailType }: HitsSprayProps) => {
         alt="그라운드 이미지"
       />
 
-      {hitsSpray && <HitsSprayDataComponent hitsSpray={hitsSpray} />}
+      {hitsSpray ? (
+        <HitsSprayDataComponent hitsSpray={hitsSpray} />
+      ) : (
+        <div className={`${flexRowCenter}`}>데이터를 불러오고 있습니다..</div>
+      )}
     </div>
   );
 };

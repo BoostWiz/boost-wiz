@@ -36,7 +36,7 @@ const InfoList = () => {
 
   return (
     <section className="w-[1100px]">
-      {cheerleader !== null && (
+      {cheerleader && (
         <div className="relative">
           <Image
             src={cheerleader.titleImgPath}
@@ -91,6 +91,7 @@ const InfoList = () => {
             const currentViewLeader = cheerleader.imgPath === p.imgPath;
             return (
               <div
+                key={p.leaderName}
                 className={`cursor-pointer ${
                   currentViewLeader && 'border-[2px]  border-primary'
                 }`}
