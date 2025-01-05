@@ -1,4 +1,3 @@
-import { Button } from '@/shared/components';
 import {
   flexColumn,
   flexColumnCenter,
@@ -6,7 +5,6 @@ import {
   flexRowCenter,
 } from '@/styles/flex';
 import Image from 'next/image';
-import { DialogClose } from '@/shared/components';
 import useGetPlayerDetail from '@/api/player/useGetPlayerDetail';
 import { PlayerDetailType } from '@/interface/player';
 
@@ -52,14 +50,6 @@ const InfoDetail = ({ pcode, playerDetailType }: InfoDetailProps) => {
               <span className="text-xs">순위: {playerDetail.rank}위</span>
             )}
           </div>
-          {/* <DialogClose>
-            <Button
-              variant="outline"
-              onClick={() => alert('서비스 준비중입니다....')}
-            >
-              <span className="text-xs">더 자세히 알아보기</span>
-            </Button>
-          </DialogClose> */}
         </div>
       </>
     )

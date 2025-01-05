@@ -28,7 +28,7 @@ const Player = ({ playerId }: { playerId: PlayerIdType }) => {
 
   const calculatedBreadList = useMemo(() => {
     const item = navData['player'].items.find((item) => item.id === playerId);
-    const breadList = [{ text: 'player', router: '/player' }];
+    const breadList = [{ text: 'player', router: '/player/coachlist' }];
 
     if (item) {
       breadList.push({ text: item.text, router: item.router });
