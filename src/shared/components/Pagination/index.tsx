@@ -8,16 +8,14 @@ import {
   PaginationPrevious,
 } from '@/shared/components/Pagination/ui/Pagination';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 
 interface Props {
   totalPages: number;
   currentPage: number;
   handlePage: (page: number) => void; // 페이지 변경 시 호출될 함수
-  searchPageUrl: string;
 }
 
-const PaginationFooter = ({ totalPages, currentPage, handlePage, searchPageUrl}: Props) => {
+const PaginationFooter = ({ totalPages, currentPage, handlePage}: Props) => {
 
   const [pages, setPages] = useState<number[]>([]);
 
@@ -114,9 +112,7 @@ const PaginationFooter = ({ totalPages, currentPage, handlePage, searchPageUrl}:
                 onClick={() =>
                   handlePage(Number(page))}
               >
-                <Link href={`/${searchPageUrl}=${page}`}>
                   {page}
-                </Link>
               </PaginationLink>
             </PaginationItem>
           );

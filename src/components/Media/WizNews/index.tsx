@@ -8,19 +8,22 @@ import PaginationFooter from '@/shared/components/Pagination';
 import useGetNewsList from '@/api/media/useGetNewsList';
 import NewsItem from '@/components/Media/NewsItem';
 import useGetNewsSearchCount from '@/api/media/useGetNewsSearchCount';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const WizNews = ({ newsId }: { newsId: NewsId }) => {
 
-  const q = useSearchParams().get("search-page") || 1;
-
   const [currentPage, setCurrentPage] = useState(1);
-  const { newsData } = useGetNewsList(currentPage);
   const totalPages = useGetNewsSearchCount().totalPage
 
-  useEffect(() => {
-    setCurrentPage(Number(q));
-  }, [q, currentPage]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathName = usePathname();
+
+  const pageQuery = searchParams.get('page');
+
+  const handleCurrentPageChange = (page: number) => {
+    setCurrentPage(page);
+  }
 
   const calculatedBreadList = useMemo(() => {
     const item = navData['media'].items_news.find((item) => item.id === newsId);
@@ -37,6 +40,17 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
     return Math.round(totalPages / 5);
   }
 
+  useEffect(() => {
+    if (currentPage === 1 && pageQuery) {
+      handleCurrentPageChange(Number(pageQuery));
+      router.push(`${pathName}?page=${pageQuery}`);
+    } else {
+      router.push(`${pathName}?page=${currentPage}`);
+    }
+  }, [currentPage]);
+
+  const { newsData } = useGetNewsList(currentPage);
+
   return (
     <div className="container-default">
       <Header type="list" breadList={calculatedBreadList} />
@@ -49,8 +63,7 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
         <PaginationFooter
           totalPages={calculatedPageList(totalPages)}
           currentPage={currentPage}
-          handlePage={setCurrentPage}
-          searchPageUrl={"media/wiznews?search-page"}/>
+          handlePage={handleCurrentPageChange}/>
       </div>
     </div>
   );
