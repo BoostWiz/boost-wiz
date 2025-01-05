@@ -9,14 +9,14 @@ import { NewsItemData } from '@/interface/media';
 const NewsItem = ({ newsData }: { newsData: NewsItemData }) => {
   return (
     <Link href={`/media/wiznews/${newsData.artcSeq}`} className={`${flexRow} h-[180px] gap-4 my-4 px-5 bg-[#ECEEF2] cursor-pointer rounded-lg shadow-lg shadow-slateGray`}>
-      <div className={`${flexRowCenter} w-1/4 h-full`}>
+      <div className={`${flexRowCenter} w-[23%] h-full`}>
         {
           newsData.imgFilePath ?
-            (<Image src={newsData.imgFilePath} className={"rounded-lg h-[140px] min-w-[250px] shadow-xl"} alt={newsData.artcTitle} width="350" height="250" quality={75} />) :
-            (<Image src="/images/media/news_thumb.png" className={"rounded-lg h-[140px] min-w-[250px] shadow-xl"} alt={newsData.artcTitle} width="350" height="250" quality={75} />)
+            (<Image src={newsData.imgFilePath} className={"rounded-lg h-[140px] shadow-xl"} alt={newsData.artcTitle} width="350" height="250" quality={75} />) :
+            (<Image src="/images/media/news_thumb.png" className={"rounded-lg h-[140px] shadow-xl"} alt={newsData.artcTitle} width="350" height="250" quality={75} />)
         }
       </div>
-      <div className={`${flexColumn} justify-center w-4/5 h-full gap-2`}>
+      <div className={`${flexColumn} justify-center w-[75%] h-full gap-2`}>
         <div className="text-md">
           {newsData.artcTitle}
         </div>
