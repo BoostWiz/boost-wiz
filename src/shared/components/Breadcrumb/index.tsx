@@ -3,6 +3,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { ChevronRight, MoreHorizontal } from 'lucide-react';
 
 import { cn } from '@/shared/lib/utils';
+import { flexRow, flexRowCenter } from '@/styles/flex';
 
 const BreadcrumbRoot = React.forwardRef<
   HTMLElement,
@@ -124,29 +125,30 @@ const Breadcrumb = ({ breadList }: BreadcrumbProps) => {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          <BreadcrumbSeparator />
         </BreadcrumbItem>
+
+        <BreadcrumbSeparator />
 
         {breadList.map((bread, idx) => {
           const lastItem = idx !== totalLen - 1;
-
           return (
-            <>
-              <BreadcrumbItem key={bread.text}>
-                <BreadcrumbLink
-                  href={bread.router}
-                  className={
-                    lastItem
-                      ? 'text-slateGray hover:text-slateGray/80'
-                      : 'text-primary hover:text-primary/80'
-                  }
-                >
-                  {bread.text}
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-
-              {lastItem && <BreadcrumbSeparator />}
-            </>
+            <article key={`${bread.text}-${idx}`}>
+              <div className={`${flexRowCenter}`}>
+                <BreadcrumbItem>
+                  <BreadcrumbLink
+                    href={bread.router}
+                    className={
+                      lastItem
+                        ? 'text-slateGray hover:text-slateGray/80'
+                        : 'text-primary hover:text-primary/80'
+                    }
+                  >
+                    {bread.text}
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                {lastItem && <BreadcrumbSeparator className="ml-2" />}
+              </div>
+            </article>
           );
         })}
       </BreadcrumbList>
