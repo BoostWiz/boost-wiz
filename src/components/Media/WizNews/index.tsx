@@ -7,19 +7,20 @@ import Header from '../Header';
 import PaginationFooter from '@/shared/components/Pagination';
 import useGetNewsList from '@/api/media/useGetNewsList';
 import NewsItem from '@/components/Media/NewsItem';
-import useGetNewsSearchCount from '@/api/media/useGetNewsSearchCount';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useSearchNewsStore } from '@/store';
 
 const WizNews = ({ newsId }: { newsId: NewsId }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = useGetNewsSearchCount().totalPage
 
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathName = usePathname();
 
   const pageQuery = searchParams.get('page');
+  const { searchName } = useSearchNewsStore();
+  const totalPages = searchName ? useGetNewsList(1, "total", searchName).newsData : useGetNewsList(1, "total").newsData;
 
   const handleCurrentPageChange = (page: number) => {
     setCurrentPage(page);
@@ -49,7 +50,7 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
     }
   }, [currentPage]);
 
-  const { newsData } = useGetNewsList(currentPage);
+  const { newsData } = useGetNewsList(currentPage, 'page', searchName);
 
   return (
     <div className="container-default">
