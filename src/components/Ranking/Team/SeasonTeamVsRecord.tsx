@@ -1,5 +1,4 @@
 import GameInformationTitle from '@/components/Game/GameInformationTitle';
-import seasonTeamVSData from '@/mocks/data/teamVS.json';
 import {
   Table,
   TableBody,
@@ -8,9 +7,13 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components';
+import { seasonVSDataType } from '@/interface/ranking';
 
-const SeasonTeamVsRecord = () => {
-  const vsData = seasonTeamVSData.data.list;
+interface propsType {
+  vsData: seasonVSDataType[];
+}
+
+const SeasonTeamVsRecord = ({ vsData }: propsType) => {
   const teams = [
     { code: 'KT', name: 'KT' },
     { code: 'HH', name: '한화' },

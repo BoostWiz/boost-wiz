@@ -1,5 +1,4 @@
 import GameInformationTitle from '@/components/Game/GameInformationTitle';
-import seasonTeamRecord from '@/mocks/data/teamranking.json';
 import {
   Table,
   TableBody,
@@ -8,11 +7,13 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components';
+import { teamDataType } from '@/interface/ranking';
 
 // 팀순위/2024 시즌 전체 팀 기록이들어감
-// todo: 타입 지정, api 연결
-const SeasonTeamRecord = () => {
-  const seasonTeamData: any = seasonTeamRecord.data.list;
+interface propsType {
+  seasonTeamData: teamDataType[];
+}
+const SeasonTeamRecord = ({ seasonTeamData }: propsType) => {
   const headerContents = [
     '순위',
     '팀명',
