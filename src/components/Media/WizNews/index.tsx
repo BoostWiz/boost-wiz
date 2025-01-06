@@ -40,7 +40,11 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
     if (queryPage !== page) {
       setPage(queryPage); // 상태 업데이트
     }
-  }, [searchParams.get('page')]);
+
+    searchName &&
+    window.history.pushState(null, "",
+      `/media/wiznews?search=${searchName}&page=${queryPage}`);
+  }, [searchParams.get('page'), searchName]);
 
   const handlePageChange = (newPage: any) => {
     if (newPage !== page) {

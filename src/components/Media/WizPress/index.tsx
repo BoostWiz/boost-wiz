@@ -40,6 +40,10 @@ const WizPress = ({ newsId }: { newsId: NewsId }) => {
     if (queryPage !== page) {
       setPage(queryPage); // 상태 업데이트
     }
+
+    searchName &&
+    window.history.pushState(null, "",
+      `/media/wizpress?search=${searchName}&page=${queryPage}`);
   }, [searchParams.get('page')]);
 
   const handlePageChange = (newPage: any) => {
