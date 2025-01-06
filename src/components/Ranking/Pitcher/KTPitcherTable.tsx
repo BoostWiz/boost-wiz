@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Table,
   TableBody,
@@ -8,34 +6,46 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components';
-import ktPitcherData from '@/mocks/data/ktPitcherData.json';
 import { useState } from 'react';
+import { pitcherStatType } from '@/interface/ranking';
 
-const KTPitcherTable = () => {
-  const ktPitchers = ktPitcherData.data.list;
-  const headerContents = [
-    '선수명',
-    '팀명',
-    '평균자책점',
-    '경기',
-    '승',
-    '패',
-    '세',
-    '홀',
-    '승률',
-    '이닝',
-    '피안타',
-    '피홈런',
-    '볼넷',
-    '사구',
-    '탈삼진',
-    '실점',
-    '자책점',
+interface propsType {
+  ktPitchers: pitcherStatType[];
+  setKtSortKey: (value: string) => void;
+}
+
+interface HeaderContent {
+  text: string;
+  value: string;
+  sortable?: boolean;
+  width?: string;
+}
+
+const KTPitcherTable = ({ ktPitchers, setKtSortKey }: propsType) => {
+  const headerContents: HeaderContent[] = [
+    { text: '선수명', value: 'playerName', sortable: false, width: 'w-12' },
+    { text: '팀명', value: 'teamName', sortable: false },
+    { text: '평균자책점', value: 'era', sortable: true, width: 'w-12' },
+    { text: '경기', value: 'gamenum', sortable: true, width: 'w-8' },
+    { text: '승', value: 'w', sortable: true, width: 'w-8' },
+    { text: '패', value: 'l', sortable: true, width: 'w-8' },
+    { text: '세', value: 'sv', sortable: true, width: 'w-8' },
+    { text: '홀', value: 'hold', sortable: true, width: 'w-8' },
+    { text: '승률', value: 'wra', sortable: true, width: 'w-8' },
+    { text: '이닝', value: 'inn', sortable: true, width: 'w-8' },
+    { text: '피안타', value: 'hit', sortable: true, width: 'w-8' },
+    { text: '피홈런', value: 'hr', sortable: true, width: 'w-8' },
+    { text: '볼넷', value: 'bb', sortable: true, width: 'w-8' },
+    { text: '사구', value: 'hp', sortable: true, width: 'w-8' },
+    { text: '탈삼진', value: 'kk', sortable: true, width: 'w-8' },
+    { text: '실점', value: 'r', sortable: true, width: 'w-8' },
+    { text: '자책점', value: 'er', sortable: true, width: 'w-8' },
   ];
-  const [sortedBy, setSortedBy] = useState('평균자책점');
-  const settingSort = (header: string) => {
-    if (header !== '선수명' && header !== '팀명') {
-      setSortedBy(header);
+  const [sortedBy, setSortedBy] = useState<string>('평균자책점');
+  const settingSort = (header: HeaderContent) => {
+    if (header.sortable === true) {
+      setSortedBy(header.text);
+      setKtSortKey(header.value);
     }
   };
 
@@ -44,13 +54,13 @@ const KTPitcherTable = () => {
       <Table>
         <TableHeader>
           <TableRow>
-            {headerContents.map((headerName) => (
+            {headerContents.map((header: HeaderContent) => (
               <TableHead
-                key={headerName}
-                onClick={() => settingSort(headerName)}
-                className={`${headerName === sortedBy ? 'text-[#D60C0C]' : ''} ${headerName == '선수명' || headerName == '평균자책점' ? 'w-12' : 'w-8'} ${headerName != '선수명' && headerName != '팀명' ? 'hover:cursor-pointer hover:text-[#D60C0C]' : ''} p-1 h-1 bg-[#ECEEF2]/30 text-center border border-[#ECEEF2]`}
+                key={header.text}
+                onClick={() => settingSort(header)}
+                className={`${header.text === sortedBy ? 'text-[#D60C0C]' : ''} ${header.text == '선수명' || header.text == '평균자책점' ? 'w-12' : 'w-8'} ${header.text != '선수명' && header.text != '팀명' ? 'hover:cursor-pointer hover:text-[#D60C0C]' : ''} p-1 h-1 bg-[#ECEEF2]/30 text-center border border-[#ECEEF2]`}
               >
-                {headerName}
+                {header.text}
               </TableHead>
             ))}
           </TableRow>
