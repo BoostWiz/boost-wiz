@@ -9,11 +9,11 @@ const useGetNewsArticle = (pageId: number) => {
         `/api/article/newsdetail?artcSeq=${pageId}`,
       );
 
-      return response.data.data.article;
+      return response.data.data.article
     },
   });
 
-  return { newsArticleData: data };
+  return { newsArticleData: data }
 };
 
 export default useGetNewsArticle;

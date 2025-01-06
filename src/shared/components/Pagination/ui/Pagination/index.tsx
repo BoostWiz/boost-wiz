@@ -37,12 +37,14 @@ PaginationItem.displayName = "PaginationItem"
 
 type PaginationLinkProps = {
   isActive?: boolean
+  disabled?: boolean; // disabled prop 추가
 } & Pick<ButtonProps, "size"> &
   React.ComponentProps<typeof Link>
 
 const PaginationLink = ({
                           className,
                           isActive,
+                          disabled,
                           size = "icon",
                           ...props
                         }: PaginationLinkProps) => (
@@ -53,6 +55,7 @@ const PaginationLink = ({
         variant: isActive ? "outline" : "ghost",
         size,
       }),
+      disabled && "cursor-not-allowed opacity-50", // 비활성화된 상태 스타일 추가
       className
     )}
     {...props}
@@ -62,12 +65,14 @@ PaginationLink.displayName = "PaginationLink"
 
 const PaginationPrevious = ({
                               className,
+                              disabled,
                               ...props
-                            }: React.ComponentProps<typeof PaginationLink>) => (
+                            }: React.ComponentProps<typeof PaginationLink> & { disabled?: boolean }) => (
   <PaginationLink
     aria-label="Go to previous page"
     size="default"
-    className={cn("gap-1 pl-2.5", className)}
+    className={cn("gap-1 pl-2.5", disabled && "cursor-not-allowed opacity-50", className)}
+    disabled={disabled} // disabled 상태를 전달
     {...props}
   >
     <ChevronLeft className="h-4 w-4" />
@@ -78,12 +83,14 @@ PaginationPrevious.displayName = "PaginationPrevious"
 
 const PaginationNext = ({
                           className,
+                          disabled,
                           ...props
-                        }: React.ComponentProps<typeof PaginationLink>) => (
+                        }: React.ComponentProps<typeof PaginationLink> & { disabled?: boolean }) => (
   <PaginationLink
     aria-label="Go to next page"
     size="default"
-    className={cn("gap-1 pr-2.5", className)}
+    className={cn("gap-1 pr-2.5", disabled && "cursor-not-allowed opacity-50", className)} // 비활성화된 상태 스타일
+    disabled={disabled} // disabled 상태를 전달
     {...props}
   >
     <span>다음</span>
