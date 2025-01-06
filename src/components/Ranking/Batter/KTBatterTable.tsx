@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Table,
   TableBody,
@@ -8,34 +6,45 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components';
-import ktBatterData from '@/mocks/data/ktBatterData.json';
 import { useState } from 'react';
+import { batterStatType } from '@/interface/ranking';
+interface propsType {
+  ktBatters: batterStatType[];
+  setKtSortKey: (value: string) => void;
+}
 
-const KTBatterTable = () => {
-  const ktBatters = ktBatterData.data.list;
-  const headerContents = [
-    '선수명',
-    '팀명',
-    '타율',
-    '경기',
-    '타수',
-    '득점',
-    '안타',
-    '2루타',
-    '3루타',
-    '홈런',
-    '타점',
-    '도루',
-    '볼넷',
-    '사구',
-    '삼진',
-    '장타율',
-    '출루율',
+interface HeaderContent {
+  text: string;
+  value: string;
+  sortable?: boolean;
+  width?: string;
+}
+
+const KTBatterTable = ({ ktBatters, setKtSortKey }: propsType) => {
+  const headerContents: HeaderContent[] = [
+    { text: '선수명', value: 'playerName', sortable: false, width: 'w-12' },
+    { text: '팀명', value: 'teamName', sortable: false },
+    { text: '타율', value: 'bra', sortable: true },
+    { text: '경기', value: 'gamenum', sortable: true },
+    { text: '타수', value: 'ab', sortable: true },
+    { text: '득점', value: 'run', sortable: true },
+    { text: '안타', value: 'hit', sortable: true },
+    { text: '2루타', value: 'h2', sortable: true },
+    { text: '3루타', value: 'h3', sortable: true },
+    { text: '홈런', value: 'hr', sortable: true },
+    { text: '타점', value: 'rbi', sortable: true },
+    { text: '도루', value: 'sb', sortable: true },
+    { text: '볼넷', value: 'bb', sortable: true },
+    { text: '사구', value: 'hp', sortable: true },
+    { text: '삼진', value: 'kk', sortable: true },
+    { text: '장타율', value: 'slg', sortable: true },
+    { text: '출루율', value: 'hra', sortable: true },
   ];
   const [sortedBy, setSortedBy] = useState('타율');
-  const settingSort = (header: string) => {
-    if (header !== '선수명' && header !== '팀명') {
-      setSortedBy(header);
+  const settingSort = (header: HeaderContent) => {
+    if (header.sortable === true) {
+      setSortedBy(header.text);
+      setKtSortKey(header.value);
     }
   };
 
@@ -44,13 +53,13 @@ const KTBatterTable = () => {
       <Table>
         <TableHeader>
           <TableRow>
-            {headerContents.map((headerName) => (
+            {headerContents.map((header: HeaderContent) => (
               <TableHead
-                key={headerName}
-                onClick={() => settingSort(headerName)}
-                className={`${headerName === sortedBy ? 'text-[#D60C0C]' : ''} ${headerName == '선수명' ? 'w-12' : 'w-8'} ${headerName != '선수명' && headerName != '팀명' ? 'hover:cursor-pointer hover:text-[#D60C0C]' : ''} p-1 h-1 bg-[#ECEEF2]/30 text-center border border-[#ECEEF2]`}
+                key={header.text}
+                onClick={() => settingSort(header)}
+                className={`${header.text === sortedBy ? 'text-[#D60C0C]' : ''} ${header.text == '선수명' || header.text == '평균자책점' ? 'w-12' : 'w-8'} ${header.text != '선수명' && header.text != '팀명' ? 'hover:cursor-pointer hover:text-[#D60C0C]' : ''} p-1 h-1 bg-[#ECEEF2]/30 text-center border border-[#ECEEF2]`}
               >
-                {headerName}
+                {header.text}
               </TableHead>
             ))}
           </TableRow>

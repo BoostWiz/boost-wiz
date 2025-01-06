@@ -1,7 +1,5 @@
-'use client';
-
 import GameInformationTitle from '../Game/GameInformationTitle';
-import { flexRowSpaceBetween } from '@/styles/flex';
+import { flexRowSpaceBetween, flexColumnCenter } from '@/styles/flex';
 import { Select } from '@/shared/components/Select';
 import {
   Table,
@@ -11,8 +9,20 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components';
-import { useState } from 'react';
-import crowdDataList from '@/mocks/data/crowdData.json';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ScaleOptions,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+import { useEffect, useState } from 'react';
+import { getCrowdData } from '@/api/game/ranking/useGetRanking';
+import { crowdDataType } from '@/interface/ranking';
 
 const seasons = [
   { value: '2024', text: '2024 시즌' },
@@ -21,38 +31,133 @@ const seasons = [
   { value: '2021', text: '2021 시즌' },
   { value: '2020', text: '2020 시즌' },
   { value: '2019', text: '2019 시즌' },
-  { value: '2018', text: '2018 시즌' },
-  { value: '2017', text: '2017 시즌' },
-  { value: '2016', text: '2016 시즌' },
-  { value: '2015', text: '2015 시즌' },
-  { value: '2014', text: '2014 시즌' },
 ];
 
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+);
+
 const Attendance = () => {
-  const crowdData = crowdDataList.data.list;
-
-  const [selectedSeason, setSelectedSeason] = useState(seasons[0].value);
-
-  const changeSeason = (selected: any) => {
-    console.log(selected);
+  const [crowdData, setCrowdData] = useState<crowdDataType[]>([]);
+  const [selectedSeason, setSelectedSeason] = useState<string>(
+    seasons[0].value,
+  );
+  const changeSeason = (selected: string) => {
     setSelectedSeason(selected);
   };
 
+  const getCrowd = async (season: string) => {
+    setCrowdData(await getCrowdData(season));
+  };
+
+  useEffect(() => {
+    getCrowd(selectedSeason);
+  }, [selectedSeason]);
+
   const headerContents = ['순위', '팀명', '경기 수', '누적관중', '평균관중'];
+
+  const options = {
+    responsive: true,
+    barPercentage: 0.7,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        position: 'nearest' as const,
+        mode: 'index' as const,
+        intersect: true,
+        yAlign: 'bottom' as const,
+        caretSize: 0,
+        caretPadding: 20,
+        bodySpacing: 4,
+        padding: 12,
+        titleFont: {
+          size: 14,
+        },
+        bodyFont: {
+          size: 12,
+        },
+        displayColors: false,
+        callbacks: {
+          title: (tooltipItems: any) => {
+            const dataIndex = tooltipItems[0].dataIndex;
+            return crowdData[dataIndex].teamName;
+          },
+          label: (context: any) => {
+            return `누적관중: ${context.raw.toLocaleString()}명`;
+          },
+        },
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: (value: number) => {
+            return `${(value / 10000).toLocaleString()}만`;
+          },
+          color: '#717781',
+          font: {
+            size: 12,
+          },
+        },
+        grid: {
+          color: '#ECEEF2',
+        },
+      } as ScaleOptions<'linear'>,
+      x: {
+        ticks: {
+          color: '#717781',
+          font: {
+            size: 12,
+          },
+        },
+        grid: {
+          display: false,
+        },
+      } as ScaleOptions<'category'>,
+    },
+  };
+
+  const data = {
+    labels: crowdData.map((item) => item.teamName),
+    datasets: [
+      {
+        label: '누적관중',
+        data: crowdData.map((item) => item.crowd),
+        backgroundColor: crowdData.map((item) =>
+          item.teamName === 'KT' ? '#D60C0C' : '#717781',
+        ),
+        borderWidth: 0,
+        borderRadius: 0,
+        hoverBackgroundColor: crowdData.map((item) =>
+          item.teamName === 'KT' ? '#D60C0C' : '#717781',
+        ),
+      },
+    ],
+  };
 
   return (
     <div className="w-full mt-4">
-      <div className="mb-8">
+      <div className="w-full mb-8">
         <div className={`${flexRowSpaceBetween}`}>
           <GameInformationTitle titleText={`${selectedSeason} 시즌 누적관중`} />
           <Select
-            defaultText={selectedSeason + ' 시즌'}
+            defaultText={`${selectedSeason} 시즌`}
             size="sm"
             onSelect={changeSeason}
             itemList={seasons}
           />
         </div>
-        <div className="mt-4">여기에 차트</div>
+        <div className={`w-full mt-4 p-6 ${flexColumnCenter}`}>
+          <Bar options={options} data={data} />
+        </div>
       </div>
       <div>
         <GameInformationTitle titleText={`${selectedSeason} 시즌 관중 기록`} />
