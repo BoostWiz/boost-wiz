@@ -9,6 +9,7 @@ import useGetNewsList from '@/api/media/useGetNewsList';
 import NewsItem from '@/components/Media/NewsItem';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useSearchNewsStore } from '@/store';
+import NewsSkeleton from '@/components/Media/NewsSkeleton';
 
 const WizNews = ({ newsId }: { newsId: NewsId }) => {
 
@@ -56,9 +57,9 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
     <div className="container-default">
       <Header type="list" breadList={calculatedBreadList} />
       <div className="border-t-[2px] border-primary">
-        {newsData && newsData.map((newsItem: NewsItemData) => (
+        {newsData ? newsData.map((newsItem: NewsItemData) => (
           <NewsItem newsData={newsItem}/>
-        ))}
+        )) : <NewsSkeleton count={5}/>}
       </div>
       <div className="mt-10">
         <PaginationFooter
