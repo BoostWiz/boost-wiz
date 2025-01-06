@@ -252,3 +252,10 @@ export interface batterStatType {
   teamName: string;
   wrHit: string;
 }
+
+export interface crowdDataType {
+  crowd: number;
+  game: number;
+  teamCode: string;
+  teamName: string;
+}

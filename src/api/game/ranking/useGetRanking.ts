@@ -113,3 +113,9 @@ export const getBatterData = async (
   );
   return res.data.data.list;
 };
+
+// 관중현황  /api/game/rank/crowd?gyear=2024
+export const getCrowdData = async (gyear: string) => {
+  const res = await axios.get(`/api/game/rank/crowd?gyear=${gyear}`);
+  return res.data.data.list;
+};
