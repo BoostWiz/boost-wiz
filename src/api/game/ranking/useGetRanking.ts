@@ -71,3 +71,45 @@ export const getPitcherData = async (
   );
   return res.data.data.list;
 };
+
+// 타자 타율 top3
+export const getBatterHraTop3Data = async (year: string) => {
+  const res = await axios.get(`/api/game/rank/batter/hra/top3?gyear=${year}`);
+  return res.data.data.list;
+};
+
+// 타자 홈런 top3
+export const getBatterHrTop3Data = async (year: string) => {
+  const res = await axios.get(`/api/game/rank/batter/hr/top3?gyear=${year}`);
+  return res.data.data.list;
+};
+
+// 전체 타자 타율 top5 /api/game/rank/batter/total/top5
+export const getBatterTop5Data = async () => {
+  const res = await axios.get(`/api/game/rank/batter/total/top5`);
+  return res.data.data.list;
+};
+
+// KT 타자 데이터
+export const getKTBatterData = async (
+  year: string,
+  pname: string,
+  sortKey: string,
+) => {
+  const res = await axios.get(
+    `/api/game/rank/kt/batter?gyear=${year}&pname=${pname}&sortKey=${sortKey.toUpperCase()}`,
+  );
+  return res.data.data.list;
+};
+
+// 전체 타자 데이터
+export const getBatterData = async (
+  year: string,
+  pname: string,
+  sortKey: string,
+) => {
+  const res = await axios.get(
+    `/api/game/rank/total/batter?gyear=${year}&pname=${pname}&sortKey=${sortKey.toUpperCase()}`,
+  );
+  return res.data.data.list;
+};
