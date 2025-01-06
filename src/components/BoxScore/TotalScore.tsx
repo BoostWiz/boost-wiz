@@ -73,7 +73,7 @@ const TotalScore = ({
               <p className="text-sm text-gray">(홈)</p>
             </div>
             <div className="w-[30%] text-center">
-              <img src={schedule.current.homeLogo} />
+              <img src={`/images/logo/${schedule.current.homeKey}.png`} />
             </div>
             <div className="w-[30%] text-center font-bold text-5xl">
               {schedule.current.hscore}
@@ -92,7 +92,7 @@ const TotalScore = ({
               {schedule.current.vscore}
             </div>
             <div className="w-[30%] text-center">
-              <img src={schedule.current.visitLogo} />
+              <img src={`/images/logo/${schedule.current.visitKey}.png`} />
             </div>
             <div className={`${flexColumnCenter} w-[30%] h-full`}>
               <p className="text-4xl font-bold mt-4">
