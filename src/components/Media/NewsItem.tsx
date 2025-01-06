@@ -4,11 +4,11 @@ import { toStringUsingDOMParser } from '@/shared/lib/toStringUsingDOMParser';
 import { convertDateString } from '@/shared/lib/convertDateString';
 import { CalendarDays, Eye } from 'lucide-react';
 import Link from 'next/link';
-import { NewsItemData } from '@/interface/media';
+import { NewsItemType } from '@/interface/media';
 
-const NewsItem = ({ newsData }: { newsData: NewsItemData }) => {
+const NewsItem = ({ newsData, pathName }: NewsItemType) => {
   return (
-    <Link href={`/media/wiznews/${newsData.artcSeq}`} className={`${flexRow} h-[180px] gap-4 my-4 px-5 bg-[#ECEEF2] cursor-pointer rounded-lg shadow-lg shadow-slateGray`}>
+    <Link href={`/media/${pathName}/${newsData.artcSeq}`} className={`${flexRow} h-[180px] gap-4 my-4 px-5 bg-[#ECEEF2] cursor-pointer rounded-lg shadow-lg shadow-slateGray`}>
       <div className={`${flexRowCenter} w-[23%] h-full`}>
         {
           newsData.imgFilePath ?

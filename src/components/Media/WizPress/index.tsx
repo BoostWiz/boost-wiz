@@ -5,13 +5,13 @@ import { navData } from '@/shared/components/Header/constants';
 import { NewsId, NewsItemData } from '@/interface/media';
 import Header from '../Header';
 import PaginationFooter from '@/shared/components/Pagination';
-import useGetNewsList from '@/api/media/useGetNewsList';
 import NewsItem from '@/components/Media/NewsItem';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useSearchNewsStore } from '@/store';
 import NewsSkeleton from '@/components/Media/NewsSkeleton';
+import useGetPressList from '@/api/media/useGetPressList';
 
-const WizNews = ({ newsId }: { newsId: NewsId }) => {
+const WizPress = ({ newsId }: { newsId: NewsId }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -21,7 +21,7 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
 
   const pageQuery = searchParams.get('page');
   const { searchName } = useSearchNewsStore();
-  const totalPages = searchName ? useGetNewsList(1, "total", searchName).newsData : useGetNewsList(1, "total").newsData;
+  const totalPages = searchName ? useGetPressList(1, "total", searchName).pressData : useGetPressList(1, "total").pressData;
 
   const handleCurrentPageChange = (page: number) => {
     setCurrentPage(page);
@@ -29,7 +29,7 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
 
   const calculatedBreadList = useMemo(() => {
     const item = navData['media'].items_news.find((item) => item.id === newsId);
-    const breadList = [{ text: 'media', router: '/media/wiznews' }];
+    const breadList = [{ text: 'media', router: '/media/wizpress' }];
 
     if (item) {
       breadList.push({ text: item.text, router: item.router });
@@ -51,14 +51,14 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
     }
   }, [currentPage]);
 
-  const { newsData } = useGetNewsList(currentPage, 'page', searchName);
+  const { pressData } = useGetPressList(currentPage, 'page', searchName);
 
   return (
     <div className="container-default">
       <Header type="list" breadList={calculatedBreadList} />
       <div className="border-t-[2px] border-primary">
-        {newsData ? newsData.map((newsItem: NewsItemData) => (
-          <NewsItem newsData={newsItem} pathName={'wiznews'} />
+        {pressData ? pressData.map((newsItem: NewsItemData) => (
+          <NewsItem newsData={newsItem} pathName={'wizpress'} />
         )) : <NewsSkeleton count={5}/>}
       </div>
       <div className="mt-10">
@@ -71,4 +71,4 @@ const WizNews = ({ newsId }: { newsId: NewsId }) => {
   );
 };
 
-export default WizNews;
+export default WizPress;
