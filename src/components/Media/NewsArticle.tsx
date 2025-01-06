@@ -30,7 +30,7 @@ const NewsArticle = ({articleData, pathName}: NewsArticlType) => {
       <div className={`${flexColumnCenter} mt-4 p-8 bg-[#ECEEF2] rounded-lg`}>
         <div className={`${flexColumnCenter} gap-2 [&_img]:mt-4`}
              dangerouslySetInnerHTML={{__html : replacePathToImgSrc(htmlString, baseUrl)}} />
-        <div className={`${flexRowCenter} gap-2 mb-4`}>
+        <div className={`${flexRowCenter} mt-4 gap-2 mb-4`}>
           <div className={`${flexColumnCenter} w-12 h-12 bg-white rounded cursor-pointer`}>
             <Image src="/sns/kakaotalk.svg" alt="Kakaotalk" width={30} height={30} />
           </div>
