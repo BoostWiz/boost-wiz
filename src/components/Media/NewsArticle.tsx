@@ -11,7 +11,6 @@ const NewsArticle = ({articleData, pathName}: NewsArticlType) => {
 
   const htmlString = articleData.artcContents;
   const baseUrl = "https://www.ktwiz.co.kr";
-  console.log(pathName);
 
   return (
     <div>
