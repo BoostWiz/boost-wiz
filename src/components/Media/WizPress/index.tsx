@@ -1,31 +1,23 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { navData } from '@/shared/components/Header/constants';
 import { NewsId, NewsItemData } from '@/interface/media';
 import Header from '../Header';
 import PaginationFooter from '@/shared/components/Pagination';
 import NewsItem from '@/components/Media/NewsItem';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useSearchNewsStore } from '@/store';
+import { useSearchParams } from 'next/navigation';
+import { usePageStore, useSearchNewsStore } from '@/store';
 import NewsSkeleton from '@/components/Media/NewsSkeleton';
 import useGetPressList from '@/api/media/useGetPressList';
 
 const WizPress = ({ newsId }: { newsId: NewsId }) => {
 
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const pathName = usePathname();
 
-  const pageQuery = searchParams.get('page');
   const { searchName } = useSearchNewsStore();
+  const { page, setPage } = usePageStore();
   const totalPages = searchName ? useGetPressList(1, "total", searchName).pressData : useGetPressList(1, "total").pressData;
-
-  const handleCurrentPageChange = (page: number) => {
-    setCurrentPage(page);
-  }
 
   const calculatedBreadList = useMemo(() => {
     const item = navData['media'].items_news.find((item) => item.id === newsId);
@@ -43,15 +35,27 @@ const WizPress = ({ newsId }: { newsId: NewsId }) => {
   }
 
   useEffect(() => {
-    if (currentPage === 1 && pageQuery) {
-      handleCurrentPageChange(Number(pageQuery));
-      router.push(`${pathName}?page=${pageQuery}`);
-    } else {
-      router.push(`${pathName}?page=${currentPage}`);
-    }
-  }, [currentPage]);
+    const queryPage = Number(searchParams.get('page')) || 1;
 
-  const { pressData } = useGetPressList(currentPage, 'page', searchName);
+    if (queryPage !== page) {
+      setPage(queryPage); // 상태 업데이트
+    }
+  }, [searchParams.get('page')]);
+
+  const handlePageChange = (newPage: any) => {
+    if (newPage !== page) {
+      setPage(newPage);
+
+      // URL 변경
+      const newUrl =
+        newPage === 1
+          ? "/media/wizpress"
+          : `/media/wizpress?page=${newPage}`;
+      window.history.pushState(null, "", newUrl);
+    }
+  };
+
+  const { pressData } = useGetPressList(page, 'page', searchName);
 
   return (
     <div className="container-default">
@@ -68,8 +72,8 @@ const WizPress = ({ newsId }: { newsId: NewsId }) => {
       <div className="mt-10">
         <PaginationFooter
           totalPages={calculatedPageList(totalPages)}
-          currentPage={currentPage}
-          handlePage={handleCurrentPageChange}/>
+          currentPage={page}
+          handlePage={handlePageChange}/>
       </div>
     </div>
   );
