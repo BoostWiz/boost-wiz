@@ -57,9 +57,13 @@ const WizPress = ({ newsId }: { newsId: NewsId }) => {
     <div className="container-default">
       <Header type="list" breadList={calculatedBreadList} />
       <div className="border-t-[2px] border-primary">
-        {pressData ? pressData.map((newsItem: NewsItemData) => (
-          <NewsItem newsData={newsItem} pathName={'wizpress'} />
-        )) : <NewsSkeleton count={5}/>}
+        {
+          pressData ? pressData.map((newsItem: NewsItemData) => (
+              <NewsItem key={crypto.randomUUID()} newsData={newsItem} pathName={'wiznews'} />)) :
+            [...Array(5)].map((_) => (
+              <NewsSkeleton key={crypto.randomUUID()} />
+            ))
+        }
       </div>
       <div className="mt-10">
         <PaginationFooter
