@@ -52,10 +52,10 @@ const Header = () => {
         </Link>
         <nav className="w-full">
           <ul className={`${flexRow} justify-between`}>
-            {Object.entries(navData).map(([key, nav]) => {
+            {navData.map((nav) => {
               return (
                 <li
-                  key={key}
+                  id={nav.id}
                   className={`${
                     isHover ? hoverCss['nav'] : currentCss['nav']
                   } w-[90px] text-center font-bold transition-colors duration-300`}
@@ -97,10 +97,10 @@ const Header = () => {
       </div>
       {isHover && (
         <div className={`w-[910px] ${flexRow} m-auto`}>
-          {Object.entries(navData).map(([key, nav]) => {
+          {navData.map((nav) => {
             return (
               <ul
-                key={key}
+                key={nav.id}
                 className={`${flexColumn} gap-2 w-[158px] py-4 text-center border-l-[1px] border-lightGray`}
               >
                 {nav.items.map((item) => {
