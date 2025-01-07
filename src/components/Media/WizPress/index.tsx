@@ -44,7 +44,7 @@ const WizPress = ({ newsId }: { newsId: NewsId }) => {
     searchName &&
     window.history.pushState(null, "",
       `/media/wizpress?search=${searchName}&page=${queryPage}`);
-  }, [searchParams.get('page')]);
+  }, [searchParams.get('page'), searchName]);
 
   const handlePageChange = (newPage: any) => {
     if (newPage !== page) {
