@@ -18,6 +18,7 @@ const LocationMap = () => {
         height: "450px",
       }}
       level={3} // 지도의 확대 레벨
+      className="rounded-lg border-[1px] border-lightGray"
     >
       <MapMarker // 마커를 생성합니다
         position={{
