@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/shared/components';
-import { flexRow, flexRowCenter, flexRowSpaceBetween } from '@/styles/flex';
+import { flexColumn, flexRow, flexRowCenter } from '@/styles/flex';
 import OutcomeDisplay from './OutcomeDisplay';
 import { useState } from 'react';
 import { Select } from '@/shared/components/Select';
@@ -13,6 +13,7 @@ const CalendarHeader = () => {
   const [isAll, setIsAll] = useState(false);
 
   const YEARS = [
+    '2025',
     '2024',
     '2023',
     '2022',
@@ -20,21 +21,20 @@ const CalendarHeader = () => {
     '2020',
     '2019',
     '2018',
-    '2017',
   ];
   const MONTHS = [
     '12',
     '11',
     '10',
-    '9',
-    '8',
-    '7',
-    '6',
-    '5',
-    '4',
-    '3',
-    '2',
-    '1',
+    '09',
+    '08',
+    '07',
+    '06',
+    '05',
+    '04',
+    '03',
+    '02',
+    '01',
   ];
 
   const toggleAll = () => {
@@ -42,7 +42,9 @@ const CalendarHeader = () => {
   };
 
   return (
-    <header className={`${flexRowSpaceBetween} items-center`}>
+    <header
+      className={`${flexColumn} gap-4 sm:flex-row sm:justify-between items-center`}
+    >
       <div className={`${flexRow} gap-4`}>
         <Button
           variant={`${!isAll ? 'default' : 'outline'}`}
@@ -60,7 +62,7 @@ const CalendarHeader = () => {
       <div className={`${flexRowCenter} gap-4`}>
         <div>
           <Select
-            defaultText="2024"
+            defaultText="2025"
             size="md"
             onSelect={setYear}
             itemList={YEARS.map((year) => ({ value: year, text: year }))}
@@ -68,7 +70,7 @@ const CalendarHeader = () => {
         </div>
         <div>
           <Select
-            defaultText="12"
+            defaultText="01"
             size="sm"
             onSelect={setMonth}
             itemList={MONTHS.map((month) => ({ value: month, text: month }))}

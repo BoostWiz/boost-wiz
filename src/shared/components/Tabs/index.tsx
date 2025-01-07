@@ -66,13 +66,9 @@ const Tabs = ({ currentTab, tabsData, onTabChange }: TabsProps) => {
   return (
     <TabsRoot value={currentTab} onValueChange={onTabChange}>
       <TabsList>
-        {tabsData.map((tabData) => (
-          <TabsTrigger
-            key={tabData}
-            value={tabData}
-            isActive={currentTab === tabData}
-          >
-            {tabData}
+        {tabsData.map((tab) => (
+          <TabsTrigger key={tab} value={tab} isActive={currentTab === tab}>
+            {tab}
           </TabsTrigger>
         ))}
       </TabsList>
@@ -82,4 +78,4 @@ const Tabs = ({ currentTab, tabsData, onTabChange }: TabsProps) => {
 
 Tabs.displayName = 'Tabs';
 
-export { Tabs };
+export { Tabs, TabsRoot, TabsList, TabsTrigger };

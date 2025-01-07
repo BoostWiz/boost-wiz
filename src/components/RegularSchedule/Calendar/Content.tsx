@@ -1,9 +1,12 @@
 import { flexRowSpaceBetween } from '@/styles/flex';
 import BoxCell from './BoxCell';
 import { useCalendarStore } from '@/store';
+import useGetSchedule from '@/api/game/useGetSchedule';
+import { ScheduleType } from '@/interface/game';
 
 const CalendarContent = () => {
   const { year, month } = useCalendarStore();
+  const { scheduleList } = useGetSchedule();
 
   const firstDay = new Date(+year, +month - 1, 1); // 해당 월의 1일
   const lastDay = new Date(+year, +month, 0); // 다음 달의 0일 (이달의 마지막 날)
@@ -19,13 +22,19 @@ const CalendarContent = () => {
 
   const days = ['일', '월', '화', '수', '목', '금', '토'];
 
-  // 임시 더미데이터 짝수만 데터 담기도록
-  const gameDummyData = Array(31)
-    .fill(null)
-    .map((_, idx) => {
-      const date = idx + 1;
-      return date % 2 === 0 ? { date, game: `Game ${date}` } : null;
-    });
+  const gameDataByDate = dates.map((date: string) => {
+    if (!date) return null;
+
+    const targetDate = `${year}${month.padStart(2, '0')}${date
+      .toString()
+      .padStart(2, '0')}`;
+
+    return (
+      scheduleList?.find(
+        (game: ScheduleType) => game.displayDate === targetDate,
+      ) || null
+    );
+  });
 
   return (
     <div className="border-t-[2px] border-black">
@@ -33,6 +42,7 @@ const CalendarContent = () => {
         {days.map((day, idx) => {
           return (
             <div
+              key={day}
               className={`w-full ${
                 idx === 0 ? 'text-primary' : 'text-black'
               } text-center`}
@@ -45,9 +55,9 @@ const CalendarContent = () => {
       <section className="w-full grid grid-cols-7 gap-2">
         {dates.map((date, index) => (
           <BoxCell
-            key={index}
+            key={gameDataByDate[index] ? gameDataByDate[index].gmkey : index}
             date={date}
-            data={gameDummyData[index - 1] ? gameDummyData[index - 1] : null}
+            data={gameDataByDate[index] ? gameDataByDate[index] : null}
           />
         ))}
       </section>

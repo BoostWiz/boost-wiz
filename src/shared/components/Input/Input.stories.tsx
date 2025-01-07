@@ -1,22 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import CardScheduleList from '.';
+import Input from '.';
 
 const meta = {
-  title: 'CardScheduleList',
-  component: CardScheduleList,
+  title: 'Input',
+  component: Input,
   parameters: {
     layout: 'centered',
-    docs: { disable: true },
   },
   tags: ['autodocs'],
   decorators: [(Story) => <Story />],
   argTypes: {},
-} satisfies Meta<typeof CardScheduleList>;
+} satisfies Meta<typeof Input>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    placeholder: 'Place holder...',
+  },
+};
+
+export const WithClassInput: Story = {
+  args: {
+    placeholder: 'Place holder...',
+    className: 'w-[300px]',
+  },
 };
