@@ -14,9 +14,9 @@ export const navData = {
     text: 'wiz park',
     router: '/wizpark',
     items: [
-      { id: 'suwon_ktwiz?', text: '수원 kt 위즈파크', router: '/wizpark/intro' },
+      { id: 'intro', text: '수원 kt 위즈파크', router: '/wizpark/intro' },
       { id: 'parking', text: '주차 예약', router: '/wizpark/parking' },
-      { id: 'find', text: '찾아오기', router: '/wizpark/location' },
+      { id: 'location', text: '찾아오기', router: '/wizpark/location' },
       { id: 'iksan', text: '익산야구장', router: '/wizpark/iksanpark' },
     ],
   },
