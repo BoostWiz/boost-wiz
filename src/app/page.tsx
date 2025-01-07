@@ -1,3 +1,7 @@
+import HighlightVideo from '@/components/Home/HighlightVideo';
+import GameInfo from '@/components/Home/GameInfo';
+import TeamRank from '@/components/Home/TeamRank';
+
 export default function Home() {
   return (
     <div className="flex flex-col w-[100vw] relative">
@@ -17,16 +21,25 @@ export default function Home() {
           alt="game schedule"
           className="w-[826px] h-[140px] absolute top-0 left-1/2 transform -translate-x-1/2"
         />
-        {/* 첫 번째 자식 태그 */}
-        <div className="w-full h-[303px] bg-green-500 shadow-[0_30px_30px_rgba(245,50,50,.3)] rounded-[20px] mt-[105px] flex justify-center items-center z-[10]">
+        <div className="w-full h-[303px] bg-white shadow-[0_30px_30px_rgba(245,50,50,.3)] rounded-[20px] mt-[105px] flex justify-center items-center z-[10]">
           <div className="flex w-[1020px] h-[222px] gap-[20px] mx-auto items-center">
-            {/* 플렉스 박스 */}
-            <div className="w-[605px] h-full bg-blue-500"></div>
-            <div className="w-[395px] h-full bg-yellow-500"></div>
+            {/* GameInfo 컴포넌트 */}
+            <GameInfo />
+            <div className="w-[395px] h-full bg-white relative">
+              {/* HighlightVideo 컴포넌트 */}
+              <HighlightVideo count={1} />
+            </div>
           </div>
         </div>
         <div className="flex w-full h-[190px] gap-[20px]">
-          <div className="flex-1 h-full bg-gradient-custom rounded-[20px]"></div>
+          <div className="flex-1 bg-gradient-custom rounded-[20px] flex items-center">
+            <TeamRank />
+            <img
+              src="/images/home/banner-score.png"
+              alt="game schedule"
+              className="w-[161px] h-[131px] mr-[17px]"
+            />
+          </div>
           <div
             className="flex-1 h-full bg-cover bg-center rounded-[20px]"
             style={{
@@ -51,15 +64,20 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 네 번째 컨테이너 */}
-      <div className="w-full h-[727.5px] mb-[140px] bg-green-500 flex flex-col relative items-center justify-center text-white text-xl">
-        {/* Wiz Gallery 이미지 */}
-        <img
-          src="/images/home/wiz-gallery.png"
-          alt="wiz video"
-          className="w-[658px] h-[175px] absolute top-0 left-1/2 transform -translate-x-1/2"
-        />
-        <div className="w-full h-[518px] flex mt-[140px] bg-blue-500"></div>
+      {/* 다섯 번째 컨테이너 */}
+      <div className="w-[1100px] h-[309px] flex gap-[20px] mb-[160px] mx-auto">
+        <div
+          className="flex-1 h-full bg-cover bg-center rounded-[20px]"
+          style={{
+            backgroundImage: "url('/images/home/banner-store.png')",
+          }}
+        ></div>
+        <div
+          className="flex-1 h-full bg-cover bg-center rounded-[20px]"
+          style={{
+            backgroundImage: "url('/images/home/player-of-the-month.png')",
+          }}
+        ></div>
       </div>
     </div>
   );
