@@ -21,8 +21,7 @@ const meta = {
     },
     tabsData: {
       control: 'object',
-      description:
-        'Tabs 에 들어가는 각 객체 형태로, 데이터는 text는 필수고 router는 옵셔널입니다.',
+      description: 'Tabs 에 들어가는 각 텍스트',
     },
   },
   args: {

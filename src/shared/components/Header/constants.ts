@@ -1,5 +1,6 @@
-export const navData = {
-  ktwiz: {
+export const navData = [
+  {
+    id: 'ktwiz',
     text: 'kt wiz',
     router: '/',
     items: [
@@ -10,7 +11,8 @@ export const navData = {
       { id: 'wallpaper', text: '월페이퍼', router: '/wallpaper' },
     ],
   },
-  wizpark: {
+  {
+    id: 'wizpark',
     text: 'wiz park',
     router: '/wiz',
     items: [
@@ -20,42 +22,42 @@ export const navData = {
       { id: 'iksan', text: '익산야구장', router: '/wiz/iksan' },
     ],
   },
-  game: {
+  {
+    id: 'game',
     text: 'Game',
     router: '/game',
     items: [
-      { id: 'regular', text: '정규 리그', router: '/game/schedule' },
+      { id: 'regular', text: '정규 리그', router: '/game/regular' },
       { id: 'boxscore', text: '박스 스코어', router: '/game/boxscore' },
       { id: 'ranking', text: '순위 기록', router: '/game/ranking' },
       { id: 'point', text: '관전포인트', router: '/game/point' },
     ],
   },
-  player: {
+  {
+    id: 'player',
     text: 'Player',
     router: '/player',
     items: [
-      { id: 'coachlist', text: '코칭스텝', router: '/player/coachlist' },
-      { id: 'pitcherlist', text: '투수', router: '/player/pitcher' },
-      { id: 'catcherlist', text: '포수', router: '/player/batter' },
-      { id: 'infielderlist', text: '내야수', router: '/player/infielderlist' },
-      { id: 'cheerleader', text: '응원단', router: '/player/cheerleader' },
+      { id: 'coach', text: '코칭스텝', router: '/player/coach' },
+      { id: 'bowler', text: '투수', router: '/player/bowler' },
+      { id: 'batter', text: '타자', router: '/player/batter' },
+      { id: 'chher_squad', text: '응원단', router: '/player/cheer_squad' },
+      { id: 'chher_song', text: '응원가', router: '/player/cheer_song' },
+      { id: 'copyright', text: '응원가 저작권', router: '/player/copyright' },
     ],
   },
-  media: {
+  {
+    id: 'media',
     text: 'Media',
     router: '/media',
     items: [
-      { id: 'wiz_news', text: 'wiz 뉴스', router: '/media/wiznews' },
-      { id: 'wiz_story', text: 'wiz 티비', router: '/media/wiztv' },
+      { id: 'wiz_news', text: 'wiz 뉴스', router: '/media/news' },
+      { id: 'wiz_story', text: 'wiz 스토리', router: '/media/bstory' },
       { id: 'thrower_info', text: '시구자 정보', router: '/media/info' },
       { id: 'wiz_photo', text: 'wiz 포토', router: '/media/photo' },
     ],
-    items_news: [
-      { id: 'wiz_news', text: 'wiz 뉴스', router: '/media/wiznews' },
-      { id: 'wiz_press', text: 'wiz 보도자료', router: '/media/wizpress' },
-    ],
   },
-};
+];
 
 export const homeCss = {
   header: 'bg-transparent hover:text-black',

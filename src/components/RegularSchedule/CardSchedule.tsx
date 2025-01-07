@@ -1,10 +1,10 @@
 import { flexColumnCenter, flexRowCenter } from '@/styles/flex';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ScheduleType } from '@/interface/game';
+import { ScheduleDataProps } from './CardScheduleList';
 
 interface ScheduleCardProps {
-  data: ScheduleType | null;
+  data: ScheduleDataProps;
   isCenter: boolean;
 }
 
@@ -12,7 +12,7 @@ const CardSchedule = ({ isCenter = false, data }: ScheduleCardProps) => {
   return (
     <div
       className={`w-full ${flexColumnCenter} gap-8 ${
-        isCenter ? 'py-2 shadow-lg scale-110 z-10' : 'h-[320px] z-0 opacity-90'
+        isCenter ? 'shadow-lg scale-110 z-10' : 'h-[320px] z-0 opacity-90'
       } rounded-sm border-[1px] border-slateGray bg-white cursor-pointer`}
     >
       {data === null ? (
@@ -22,50 +22,46 @@ const CardSchedule = ({ isCenter = false, data }: ScheduleCardProps) => {
       ) : (
         <>
           <div className="px-3 py-1 bg-fireEngineRed rounded-3xl">
-            <span className="text-sm text-white">{data.displayDate}</span>
+            <span className="text-sm text-white">{data.date}</span>
           </div>
           <div></div>
           <div className={`${flexRowCenter} gap-8`}>
             <div className={`${flexColumnCenter} gap-2`}>
               <Image
-                src={data.homeLogo}
+                src={data.loseTeam.logo}
                 alt="team logo"
                 width={100}
                 height={75}
               />
-              <span>{data.homeKey}</span>
-              <span className="text-sm text-primary">H</span>
+              <span>{data.loseTeam.name}</span>
+              <span className="text-sm text-slateGray">
+                선발: {data.loseTeam.starting}
+              </span>
             </div>
 
             <div className={`${flexColumnCenter} gap-8`}>
-              <span className="sm:text-xl">
-                {data.visitScore} : {data.homeScore}
+              <span className="text-xl">
+                {data.loseTeam.score} : {data.winTeam.score}
               </span>
-              <span
-                className={`${
-                  data.outcome === '승' ? 'text-primary' : 'text-turquoise'
-                } text-xl`}
-              >
-                {data.outcome}
-              </span>
+              <span className="text-primary text-xl">승</span>
               <Link href="/">
-                <div
-                  className={`${flexRowCenter} px-2 py-1 bg-turquoise rounded-3xl`}
-                >
-                  <span className="text-caption text-white">경기정보</span>
+                <div className="px-3 py-1 bg-turquoise rounded-3xl">
+                  <span className="text-sm text-white">경기정보</span>
                 </div>
               </Link>
             </div>
 
             <div className={`${flexColumnCenter} gap-2`}>
               <Image
-                src={data.visitLogo}
+                src={data.winTeam.logo}
                 alt="team logo"
                 width={100}
                 height={75}
               />
-              <span>{data.visitKey}</span>
-              <span className="text-sm text-turquoise">A</span>
+              <span>{data.winTeam.name}</span>
+              <span className="text-sm text-slateGray">
+                선발: {data.winTeam.starting}
+              </span>
             </div>
           </div>
         </>

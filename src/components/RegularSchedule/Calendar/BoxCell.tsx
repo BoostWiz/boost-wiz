@@ -9,11 +9,10 @@ import OutcomeDisplay from './OutcomeDisplay';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
-import { ScheduleType } from '@/interface/game';
 
 interface BoxCellProps {
   date: number;
-  data: ScheduleType | null;
+  data: any; // BackEnd Data type 체크 필요
 }
 
 const BoxCell = ({ date, data }: BoxCellProps) => {
@@ -32,22 +31,20 @@ const BoxCell = ({ date, data }: BoxCellProps) => {
                 className={`${flexRowSpaceBetween} items-center px-1 w-[100px] h-8 bg-lightGray rounded-lg`}
               >
                 <div className={`${flexRow} items-center gap-2`}>
-                  <OutcomeDisplay text={data.outcome} />
-                  <span className="text-xs">
-                    {data.homeScore} : {data.visitScore}
-                  </span>
+                  <OutcomeDisplay text="승" />
+                  <span className="text-xs">11 : 5</span>
                 </div>
 
                 <ChevronRight size={12} />
               </div>
             </Link>
           </div>
-          <div className="mt-1">
+          <div className="mt-4">
             <div className={`${flexRowCenter} gap-1`}>
               <div className={`${flexColumnCenter}`}>
                 <div className="text-primary">H</div>
                 <Image
-                  src={data.homeLogo || ''}
+                  src="/logo/ktwiz_logo.png"
                   alt="team logo"
                   width={50}
                   height={37}
@@ -57,7 +54,7 @@ const BoxCell = ({ date, data }: BoxCellProps) => {
               <div className={`${flexColumnCenter}`}>
                 <div className="text-turquoise">A</div>
                 <Image
-                  src={data.visitLogo || ''}
+                  src="/logo/lg_logo.png"
                   alt="team logo"
                   width={50}
                   height={37}
@@ -66,10 +63,8 @@ const BoxCell = ({ date, data }: BoxCellProps) => {
             </div>
           </div>
           <div className={`${flexColumnCenter}`}>
-            <span className="text-primary text-xs">
-              {data.gtime} {data.stadium}
-            </span>
-            <span className="text-caption">{data.broadcast}</span>
+            <span className="text-primary text-xs">17:00 잠실</span>
+            <span className="text-xs">SPO-T,MS-T,SS-T</span>
           </div>
         </>
       )}
