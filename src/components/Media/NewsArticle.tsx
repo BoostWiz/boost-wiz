@@ -1,11 +1,11 @@
 import { flexColumnCenter, flexRow, flexRowCenter } from '@/styles/flex';
 import { convertDateString } from '@/shared/lib/convertDateString';
 import { ArrowLeft, ArrowRight, CalendarDays, Eye, List } from 'lucide-react';
-import Image from 'next/image';
 import { Button } from '@/shared/components';
 import Link from 'next/link';
 import { replacePathToImgSrc } from '@/shared/lib/replacePathToImgSrc';
 import { NewsArticlType } from '@/interface/media';
+import SocialMediaShare from '@/components/Media/SocialMediaShare';
 
 const NewsArticle = ({articleData, pathName}: NewsArticlType) => {
 
@@ -30,17 +30,10 @@ const NewsArticle = ({articleData, pathName}: NewsArticlType) => {
       <div className={`${flexColumnCenter} mt-4 p-8 bg-[#ECEEF2] rounded-lg`}>
         <div className={`${flexColumnCenter} gap-2 [&_img]:mt-4`}
              dangerouslySetInnerHTML={{__html : replacePathToImgSrc(htmlString, baseUrl)}} />
-        <div className={`${flexRowCenter} mt-4 gap-2 mb-4`}>
-          <div className={`${flexColumnCenter} w-12 h-12 bg-white rounded cursor-pointer`}>
-            <Image src="/sns/kakaotalk.svg" alt="Kakaotalk" width={30} height={30} />
-          </div>
-          <div className={`${flexColumnCenter} w-12 h-12 bg-white rounded cursor-pointer`}>
-            <Image src="/sns/facebook.svg" alt="Kakaotalk" width={30} height={30} />
-          </div>
-          <div className={`${flexColumnCenter} w-12 h-12 bg-white rounded cursor-pointer`}>
-            <Image src="/sns/x.svg" alt="Kakaotalk" width={30} height={30} />
-          </div>
-        </div>
+        <SocialMediaShare
+          artcTitle={articleData.artcTitle}
+          artcContents={convertDateString(articleData.regDttm)}
+          imgFilePath={replacePathToImgSrc(htmlString, baseUrl)}/>
       </div>
       <div className={`${flexRow} justify-between items-center justify-items-center h-[50px] mt-4 mb-6 px-4 bg-[#ECEEF2] rounded-lg`}>
         <div className={`${flexRow} gap-2`}>

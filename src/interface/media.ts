@@ -31,3 +31,9 @@ export interface NewsArticleData {
   "artcNextSeq": number;
   "artcPrevSeq": number;
 }
+
+export interface KakaoShareData {
+  "artcTitle": string;
+  "artcContents": string;
+  "imgFilePath": string;
+}
