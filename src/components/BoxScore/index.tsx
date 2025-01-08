@@ -8,6 +8,7 @@ import {
   scoreboardType,
   keyDataType,
 } from '@/interface/boxscore';
+import { Breadcrumb } from '@/shared/components/Breadcrumb';
 
 interface propsType {
   boxscoreData: boxscoreType;
@@ -51,8 +52,16 @@ const BoxScore = ({ boxscoreData, setGameData }: propsType) => {
 
   const maxInning = getMaxInnings(boxscoreData.scoreboard);
 
+  const breadList = [
+    { text: 'Game', router: '/game/schedule' },
+    { text: '박스스코어', router: '/game/boxscore' },
+  ];
+
   return (
     <div className="container-default">
+      <div className="flex justify-end mb-2">
+        <Breadcrumb breadList={breadList} />
+      </div>
       <div className="border-t-[2px] border-primary">
         <TotalScore
           schedule={boxscoreData.schedule}
