@@ -6,15 +6,15 @@ import KakaoTalkIcon from '@/../public/sns/kakaotalk.svg';
 
 const SocialMediaShare = () => {
   return (
-    <div className={`${flexRowCenter} mt-4 gap-2 mb-4`}>
-      <div className={`${flexColumnCenter} w-12 h-12 bg-white rounded cursor-pointer`}>
-        <KakaoTalkIcon/>
+    <div className={`${flexRowCenter} mt-4 gap-4 mb-4`}>
+      <div className={`${flexColumnCenter} w-12 h-12 bg-[#FAE103] border-[1px] rounded cursor-pointer`}>
+        <KakaoTalkIcon color={'#3B1E1E'} width={30} height={30} />
       </div>
-      <div className={`${flexColumnCenter} w-12 h-12 bg-white rounded cursor-pointer`}>
-        <FacebookIcon/>
+      <div className={`${flexColumnCenter} w-12 h-12 bg-[#F2F4F7] border-[1px] rounded cursor-pointer`}>
+        <FacebookIcon color={'#0866FF'} width={30} height={30} />
       </div>
-      <div className={`${flexColumnCenter} w-12 h-12 bg-white rounded cursor-pointer`}>
-        <XIcon/>
+      <div className={`${flexColumnCenter} w-12 h-12 bg-[#000000] border-[1px] rounded cursor-pointer`}>
+        <XIcon color={'#E7E9EA'} width={30} height={30} />
       </div>
     </div>
   );
