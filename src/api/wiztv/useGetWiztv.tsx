@@ -30,11 +30,11 @@ export async function fetchHLVideo(
   return data.list;
 }
 
-async function fetchStoryVideo(
+export async function fetchStoryVideo(
   searchWord: string,
   itemCount: number,
   pageNum: number,
-): Promise<any> {
+): Promise<HighlightItem[]> {
   const queryParams = new URLSearchParams({
     searchWord: searchWord,
     itemCount: itemCount.toString(), // number를 string으로 변환
@@ -50,7 +50,7 @@ async function fetchStoryVideo(
   }
 
   const { data } = await response.json();
-  return data;
+  return data.list;
 }
 
 // export function useGetWiztv() {

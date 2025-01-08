@@ -12,7 +12,12 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    domains: ['wizzap.ktwiz.co.kr', '54.180.228.165'],
+    domains: [
+      'wizzap.ktwiz.co.kr',
+      '54.180.228.165',
+      'phinf.pstatic.net',
+      'i.ytimg.com',
+    ],
   },
 };
 
