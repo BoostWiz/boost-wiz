@@ -14,6 +14,15 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['wizzap.ktwiz.co.kr', '54.180.228.165'],
   },
+
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    });
+    return config;
+  },
 };
 
 export default nextConfig;
