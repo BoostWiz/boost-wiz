@@ -2,18 +2,25 @@ import ViewPoint from './ViewPoint';
 import PitcherMatchup from './PitcherMatchup';
 import LineUp from './LineUp';
 import ChannelInfo from './ChannelInfo';
-import WeatherInfo from './WeatherInfo';
+// import WeatherInfo from './WeatherInfo';
 import { flexRowSpaceBetween } from '@/styles/flex';
 import { pointType } from '@/interface/point';
-import pointJSON from '@/mocks/data/pointData.json';
+import { keyDataType } from '@/interface/boxscore';
 
-const Point = () => {
-  const pointData: pointType = pointJSON.data as pointType;
+interface propsType {
+  pointData: pointType;
+  setGameData: (gameData: keyDataType) => void;
+}
 
+const Point = ({ pointData, setGameData }: propsType) => {
   return (
     <div className="container-default">
       <div className="border-t-[2px] border-primary">
-        <ViewPoint gameData={pointData} />
+        <ViewPoint
+          gameData={pointData}
+          setGameData={setGameData}
+          schedule={pointData.schedule}
+        />
         <PitcherMatchup
           homeName={pointData.gameScore.home}
           visitName={pointData.gameScore.visit}
@@ -34,7 +41,7 @@ const Point = () => {
         />
         <div className={`${flexRowSpaceBetween} my-10`}>
           <ChannelInfo broadcastInfo={pointData.schedule.current.broadcast} />
-          <WeatherInfo />
+          {/* <WeatherInfo /> */}
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import GameInformationTitle from '@/components/Game/GameInformationTitle';
+import GameInformationTitle from '../../Game/GameInformationTitle';
 import {
   Table,
   TableBody,

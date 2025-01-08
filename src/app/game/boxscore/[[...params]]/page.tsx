@@ -14,6 +14,7 @@ interface PageProps {
     params?: string[];
   }>;
 }
+
 // todos: banner 수정
 export default function BoxScorePage({ params }: PageProps) {
   const [gameData, setGameData] = useState<keyDataType | null>(null);

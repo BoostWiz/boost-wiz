@@ -1,16 +1,41 @@
 import { flexColumnCenter, flexRow, flexRowCenter } from '@/styles/flex';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { pointType } from '@/interface/point';
+import { pointType, scheduleInfo } from '@/interface/point';
+import { keyDataType } from '@/interface/boxscore';
 
 interface propsType {
   gameData: pointType;
+  setGameData: (gameData: keyDataType) => void;
+  schedule: {
+    current: scheduleInfo;
+    next: scheduleInfo;
+    prev: scheduleInfo;
+  };
 }
 
-const ViewPoint = ({ gameData }: propsType) => {
+const ViewPoint = ({ gameData, setGameData, schedule }: propsType) => {
+  const handleClickNextButton = () => {
+    if (schedule.next == undefined) {
+      return;
+    }
+    setGameData({
+      gameDate: String(schedule.next.gameDate),
+      gmkey: schedule.next.gmkey,
+    });
+  };
+
   return (
     <div className={`${flexRow} h-[330px] bg-[#ECEEF2]/30 px-4`}>
       {/* 전날 경기 */}
-      <div className={`${flexColumnCenter} h-full sm:w-[5%] w-[10%]`}>
+      <div
+        onClick={() =>
+          setGameData({
+            gameDate: String(schedule.prev.gameDate),
+            gmkey: schedule.prev.gmkey,
+          })
+        }
+        className={`${flexColumnCenter} h-full sm:w-[5%] w-[10%] hover:cursor-pointer`}
+      >
         <ChevronLeft size={50} />
       </div>
       <div className={`${flexColumnCenter} h-full sm:w-[90%] w-[80%]`}>
@@ -30,7 +55,7 @@ const ViewPoint = ({ gameData }: propsType) => {
               </p>
             </div>
             <img
-              src={gameData.gameScore.homeLogo}
+              src={`/images/logo/${gameData.gameScore.homeKey}.png`}
               alt="home logo"
               className="w-28 h-28"
             />
@@ -38,7 +63,7 @@ const ViewPoint = ({ gameData }: propsType) => {
           <p className="text-xl mx-2">VS</p>
           <div className={`flex items-center justify-start w-[40%] gap-4`}>
             <img
-              src={gameData.gameScore.visitLogo}
+              src={`/images/logo/${gameData.gameScore.visitKey}.png`}
               alt="home logo"
               className="w-28 h-28"
             />
@@ -165,8 +190,14 @@ const ViewPoint = ({ gameData }: propsType) => {
       </div>
 
       {/* 다음 경기 */}
-      <div className={`${flexColumnCenter} h-full sm:w-[5%] w-[10%]`}>
-        <ChevronRight size={50} />
+      <div
+        className={`${flexColumnCenter} h-full sm:w-[5%] w-[10%] ${schedule.next == undefined ? '' : 'hover:cursor-pointer'} `}
+        onClick={() => handleClickNextButton()}
+      >
+        <ChevronRight
+          size={50}
+          className={schedule.next == undefined ? 'stroke-gray' : ''}
+        />
       </div>
     </div>
   );
