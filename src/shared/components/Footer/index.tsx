@@ -9,10 +9,22 @@ type ModalKey = 'private' | 'terms' | 'email' | 'sitemap';
 
 const Footer = () => {
   const snsData = [
-    { id: 'instagram', url: '' },
-    { id: 'facebook', url: '' },
-    { id: 'youtube', url: '' },
-    { id: 'naver', url: '' },
+    {
+      id: 'instagram',
+      url: '/instagram.png',
+      link: 'https://www.instagram.com/ktwiz.pr/#',
+    },
+    {
+      id: 'facebook',
+      url: '/facebook.png',
+      link: 'https://www.facebook.com/ktwiz',
+    },
+    {
+      id: 'youtube',
+      url: '/youtube.png',
+      link: 'https://www.youtube.com/c/ktwiztv',
+    },
+    { id: 'naver', url: '/naver.png', link: 'https://tv.naver.com/ktwiz' },
   ] as const;
 
   const navData: { id: ModalKey; text: string }[] = [
@@ -145,14 +157,22 @@ const Footer = () => {
 
         <div className={`sm:${flexColumn} gap-8 sm:block hidden`}>
           {/* SelectBox - Kt 그룹사 및 관련사이트 */}
-          <div className="w-[200px] h-[36px] border-[1px] border-gray rounded-sm curspr-pointer"></div>
-          <div className={`${flexRow} gap-2`}>
+          <div
+            className={`${flexRowCenter} w-[200px] h-[36px] border-[1px] border-gray rounded-sm curspr-pointer text-xs cursor-pointer`}
+          >
+            kt 그룹사 및 관련사이트
+          </div>
+          <div className={`${flexRow} gap-2 mt-8`}>
             {snsData.map((sns) => {
               return (
                 <div
                   key={sns.id}
-                  className="w-8 h-8 border-[1px] border-gray rounded-sm cursor-pointer"
-                ></div>
+                  className={`${flexRowCenter} w-8 h-8 border-[1px] border-gray rounded-sm cursor-pointer`}
+                >
+                  <Link href={sns.link} target="_blank">
+                    <Image src={sns.url} width={18} height={18} alt={sns.url} />
+                  </Link>
+                </div>
               );
             })}
           </div>

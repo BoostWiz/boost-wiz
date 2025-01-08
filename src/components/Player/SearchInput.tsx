@@ -12,11 +12,18 @@ const SearchInput = () => {
     setSearchName(searchValue);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setSearchName(searchValue);
+    }
+  };
+
   return (
     <div className={`${flexRowCenter} gap-2`}>
       <Input
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <Button onClick={handleSearch}>
         <span className="text-xs">찾기</span>
