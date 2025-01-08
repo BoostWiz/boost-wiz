@@ -13,11 +13,18 @@ const SearchBar = () => {
     setSearchName(search);
   };
 
+  const handleKeyDown = (e: any) => {
+    if(e.key === 'Enter') {
+      setSearchName(search);
+    }
+  }
+
   return (
     <div className={`${flexRowCenter} gap-2`}>
       <Input
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <Button className="h-9" variant="outline" onClick={onClickEvent}>
         <span className={`${flexRowCenter} text-xs gap-2`}><Search/>찾기</span>

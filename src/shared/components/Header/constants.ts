@@ -12,12 +12,12 @@ export const navData = {
   },
   wizpark: {
     text: 'wiz park',
-    router: '/wiz',
+    router: '/wizpark',
     items: [
-      { id: 'suwon_ktwiz?', text: '수원 kt wiz', router: '/wiz/suwon' },
-      { id: 'parking', text: '주차 예약', router: '/wiz/parking' },
-      { id: 'find', text: '찾아오기', router: '/wiz/find' },
-      { id: 'iksan', text: '익산야구장', router: '/wiz/iksan' },
+      { id: 'intro', text: '수원 kt 위즈파크', router: '/wizpark/intro' },
+      { id: 'parking', text: '주차 예약', router: '/wizpark/parking' },
+      { id: 'location', text: '찾아오기', router: '/wizpark/location' },
+      { id: 'iksan', text: '익산야구장', router: '/wizpark/iksanpark' },
     ],
   },
   game: {
