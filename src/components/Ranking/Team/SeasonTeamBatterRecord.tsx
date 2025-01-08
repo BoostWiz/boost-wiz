@@ -1,5 +1,4 @@
 import GameInformationTitle from '@/components/Game/GameInformationTitle';
-import seasonBatterData from '@/mocks/data/teamBatterRanking.json';
 import {
   Table,
   TableBody,
@@ -8,10 +7,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components';
+import { seasonBatterDataType } from '@/interface/ranking';
 
-// todo: 타입지정, api 연결
-const SeasonTeamBatterRecord = () => {
-  const batterData: any = seasonBatterData.data.list;
+interface propsType {
+  batterData: seasonBatterDataType[];
+}
+const SeasonTeamBatterRecord = ({ batterData }: propsType) => {
   const headerContents = [
     '팀명',
     '안타',

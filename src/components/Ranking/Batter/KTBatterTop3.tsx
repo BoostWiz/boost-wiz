@@ -1,11 +1,12 @@
 import { flexRowCenter } from '@/styles/flex';
-import teamBraTop3Data from '@/mocks/data/teamBraTop3.json';
-import teamHrTop3Data from '@/mocks/data/teamHrTop3.json';
+import { batterStatType } from '@/interface/ranking';
 
-const KTBatterTop3 = () => {
-  const teamBraTop3 = teamBraTop3Data.data.list;
-  const teamHrTop3 = teamHrTop3Data.data.list;
+interface propsType {
+  batterHraTop3: batterStatType[];
+  batterHrTop3: batterStatType[];
+}
 
+const KTBatterTop3 = ({ batterHraTop3, batterHrTop3 }: propsType) => {
   return (
     <div
       className={`${flexRowCenter} w-[70%] bg-[#ECEEF2]/50 pt-4 pb-6 rounded`}
@@ -17,12 +18,12 @@ const KTBatterTop3 = () => {
         </div>
         <div className={`${flexRowCenter} w-full mt-4`}>
           <img
-            src={teamBraTop3[0].playerPrvwImg}
-            alt={teamBraTop3[0].playerName}
+            src={batterHraTop3[0]?.playerPrvwImg}
+            alt={batterHraTop3[0]?.playerName}
             className="w-[40%] h-full"
           />
           <div className="mx-4">
-            {teamBraTop3.map((player, idx) => (
+            {batterHraTop3.map((player, idx) => (
               <p key={idx} className="my-2">
                 {idx + 1}. {player.playerName}({player.hra})
               </p>
@@ -37,12 +38,12 @@ const KTBatterTop3 = () => {
         </div>
         <div className={`${flexRowCenter} w-full mt-4`}>
           <img
-            src={teamHrTop3[0].playerPrvwImg}
-            alt={teamHrTop3[0].playerName}
+            src={batterHrTop3[0]?.playerPrvwImg}
+            alt={batterHrTop3[0]?.playerName}
             className="w-[40%] h-full"
           />
           <div className="mx-4">
-            {teamHrTop3.map((player, idx) => (
+            {batterHrTop3.map((player, idx) => (
               <p key={idx} className="my-2">
                 {idx + 1}. {player.playerName}({player.hr})
               </p>

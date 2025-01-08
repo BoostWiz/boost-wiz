@@ -2,7 +2,10 @@
 
 import BoxScore from '@/components/BoxScore';
 // import Banner from '@/shared/components/Banner';
-import { getLatestGame, getBoxscore } from '@/api/boxscore/useGetBoxscoreData';
+import {
+  getLatestGame,
+  getBoxscore,
+} from '@/api/game/boxscore/useGetBoxscoreData';
 import { useState, useEffect } from 'react';
 import { keyDataType, boxscoreType } from '@/interface/boxscore';
 
