@@ -30,7 +30,10 @@ const NewsArticle = ({articleData, pathName}: NewsArticlType) => {
       <div className={`${flexColumnCenter} mt-4 p-8 bg-[#ECEEF2] rounded-lg`}>
         <div className={`${flexColumnCenter} gap-2 [&_img]:mt-4`}
              dangerouslySetInnerHTML={{__html : replacePathToImgSrc(htmlString, baseUrl)}} />
-        <SocialMediaShare/>
+        <SocialMediaShare
+          artcTitle={articleData.artcTitle}
+          artcContents={convertDateString(articleData.regDttm)}
+          imgFilePath={replacePathToImgSrc(htmlString, baseUrl)}/>
       </div>
       <div className={`${flexRow} justify-between items-center justify-items-center h-[50px] mt-4 mb-6 px-4 bg-[#ECEEF2] rounded-lg`}>
         <div className={`${flexRow} gap-2`}>
