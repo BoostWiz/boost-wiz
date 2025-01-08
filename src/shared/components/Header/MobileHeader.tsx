@@ -19,7 +19,7 @@ const MobileHeader = () => {
         </Button>
         <div className={`${flexRow} gap-4`}>
           <div className={`${flexRow}`}>
-            <Link href="/signup">
+            <Link href="/lgoin">
               <Button
                 height="sm"
                 className={`transition-colors duration-300 text-xs`}

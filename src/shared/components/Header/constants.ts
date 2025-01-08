@@ -4,10 +4,10 @@ export const navData = {
     router: '/',
     items: [
       { id: 'ktwiz?', text: 'kt wiz는?', router: '/' },
-      { id: 'bi', text: '구단BI', router: '/' },
-      { id: 'policy', text: '회원정책', router: '/user/policy' },
-      { id: 'sponsor', text: '스폰서', router: '/sponsor' },
-      { id: 'wallpaper', text: '월페이퍼', router: '/wallpaper' },
+      // { id: 'bi', text: '구단BI', router: '/' },
+      // { id: 'policy', text: '회원정책', router: '/user/policy' },
+      // { id: 'sponsor', text: '스폰서', router: '/sponsor' },
+      // { id: 'wallpaper', text: '월페이퍼', router: '/wallpaper' },
     ],
   },
   wizpark: {
@@ -15,9 +15,9 @@ export const navData = {
     router: '/wizpark',
     items: [
       { id: 'intro', text: '수원 kt 위즈파크', router: '/wizpark/intro' },
-      { id: 'parking', text: '주차 예약', router: '/wizpark/parking' },
+      // { id: 'parking', text: '주차 예약', router: '/wizpark/parking' },
       { id: 'location', text: '찾아오기', router: '/wizpark/location' },
-      { id: 'iksan', text: '익산야구장', router: '/wizpark/iksanpark' },
+      // { id: 'iksan', text: '익산야구장', router: '/wizpark/iksanpark' },
     ],
   },
   game: {
@@ -47,8 +47,8 @@ export const navData = {
     items: [
       { id: 'wiz_news', text: 'wiz 뉴스', router: '/media/wiznews' },
       { id: 'wiz_story', text: 'wiz 티비', router: '/media/wiztv' },
-      { id: 'thrower_info', text: '시구자 정보', router: '/media/info' },
-      { id: 'wiz_photo', text: 'wiz 포토', router: '/media/photo' },
+      // { id: 'thrower_info', text: '시구자 정보', router: '/media/info' },
+      // { id: 'wiz_photo', text: 'wiz 포토', router: '/media/photo' },
     ],
     items_news: [
       { id: 'wiz_news', text: 'wiz 뉴스', router: '/media/wiznews' },

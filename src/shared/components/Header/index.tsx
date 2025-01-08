@@ -67,7 +67,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className={`${flexRow} gap-4`}>
-          <Link href="/signup">
+          <Link href="/login">
             <Button
               className={`${
                 isHover ? hoverCss['button'] : currentCss['button']
