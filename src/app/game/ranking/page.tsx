@@ -1,14 +1,16 @@
 import Ranking from '@/components/Ranking';
+import Banner from '@/shared/components/Banner';
+import { navData } from '@/shared/components/Header/constants';
 
-// todos: 배너 수정
-export default function BoxScorePage() {
+export default function RankingPage() {
   return (
     <section>
       <div className="mt-[100px]">
-        {/* <Banner
-          title="박스스코어"
-          description="박스스코어 정보를 알려드립니다."
-        /> */}
+        <Banner
+          title="관전포인트"
+          description="오늘의 관전 포인트를 알려 드립니다."
+          navData={navData['game'].items}
+        />
       </div>
       <Ranking />
     </section>

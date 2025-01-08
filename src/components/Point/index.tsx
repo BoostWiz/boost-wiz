@@ -6,6 +6,7 @@ import ChannelInfo from './ChannelInfo';
 import { flexRowSpaceBetween } from '@/styles/flex';
 import { pointType } from '@/interface/point';
 import { keyDataType } from '@/interface/boxscore';
+import { Breadcrumb } from '@/shared/components/Breadcrumb';
 
 interface propsType {
   pointData: pointType;
@@ -13,8 +14,16 @@ interface propsType {
 }
 
 const Point = ({ pointData, setGameData }: propsType) => {
+  const breadList = [
+    { text: 'Game', router: '/game/schedule' },
+    { text: '관전포인트', router: '/game/point' },
+  ];
+
   return (
     <div className="container-default">
+      <div className="flex justify-end mb-2">
+        <Breadcrumb breadList={breadList} />
+      </div>
       <div className="border-t-[2px] border-primary">
         <ViewPoint
           gameData={pointData}

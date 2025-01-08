@@ -1,13 +1,14 @@
 'use client';
 
 import BoxScore from '@/components/BoxScore';
-// import Banner from '@/shared/components/Banner';
+import Banner from '@/shared/components/Banner';
 import {
   getLatestGame,
   getBoxscore,
 } from '@/api/game/boxscore/useGetBoxscoreData';
 import { useState, useEffect } from 'react';
 import { keyDataType, boxscoreType } from '@/interface/boxscore';
+import { navData } from '@/shared/components/Header/constants';
 
 interface PageProps {
   params: Promise<{
@@ -15,7 +16,6 @@ interface PageProps {
   }>;
 }
 
-// todos: banner 수정
 export default function BoxScorePage({ params }: PageProps) {
   const [gameData, setGameData] = useState<keyDataType | null>(null);
   const [boxscoreData, setBoxscoreData] = useState<boxscoreType | null>(null);
@@ -50,10 +50,11 @@ export default function BoxScorePage({ params }: PageProps) {
   return (
     <section>
       <div className="mt-[100px]">
-        {/* <Banner
+        <Banner
           title="박스스코어"
           description="박스스코어 정보를 알려드립니다."
-        /> */}
+          navData={navData['game'].items}
+        />
       </div>
       {boxscoreData !== null ? (
         <BoxScore boxscoreData={boxscoreData} setGameData={setGameData} />
