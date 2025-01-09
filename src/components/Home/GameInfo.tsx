@@ -10,9 +10,8 @@ export default function GameInfo() {
 
   useEffect(() => {
     const fetchGameData = async () => {
-      const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
       try {
-        const response = await axios.get(`${BASE_URL}/api/game/recentGames`);
+        const response = await axios.get(`/api/game/recentGames`);
         const data = response.data.data;
         setGameData(data);
         setSelectedGame(data.current); // 초기 선택된 게임 설정

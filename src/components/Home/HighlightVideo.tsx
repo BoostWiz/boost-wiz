@@ -17,7 +17,7 @@ export default function HighlightVideo({ index }: HighlightVideoProps) {
         process.env.NEXT_PUBLIC_API_URL || 'https://www.ktwiz.co.kr';
       try {
         const res = await axios.get(
-          `${BASE_URL}/api/media/highlightlist?count=10`, // 최대 10개의 비디오 호출
+          `/api/media/highlightlist?count=10`, // 최대 10개의 비디오 호출
         );
 
         const videoLinks =

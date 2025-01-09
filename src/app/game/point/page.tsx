@@ -7,7 +7,6 @@ import { getLatestGame } from '@/api/game/boxscore/useGetBoxscoreData';
 import { pointType } from '@/interface/point';
 import { keyDataType } from '@/interface/boxscore';
 import Banner from '@/shared/components/Banner';
-import { navData } from '@/shared/components/Header/constants';
 
 export default function PointPage() {
   const [gameData, setGameData] = useState<keyDataType | null>(null);
@@ -31,9 +30,8 @@ export default function PointPage() {
     <section>
       <div className="mt-[100px]">
         <Banner
-          title="순위기록"
+          title="관전포인트"
           description="kt wiz 정규리그 기록을 알려 드립니다."
-          navData={navData['game'].items}
         />
       </div>
       {pointData !== null ? (
