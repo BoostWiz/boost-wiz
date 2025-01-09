@@ -53,7 +53,6 @@ export default function BoxScorePage({ params }: PageProps) {
         <Banner
           title="박스스코어"
           description="박스스코어 정보를 알려드립니다."
-          navData={navData['game'].items}
         />
       </div>
       {boxscoreData !== null ? (

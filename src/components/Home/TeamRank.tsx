@@ -16,10 +16,8 @@ export default function TeamRank() {
 
   useEffect(() => {
     const fetchTeamRank = async () => {
-      const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-
       try {
-        const res = await axios.get(`${BASE_URL}/api/game/ktwizteamrank`);
+        const res = await axios.get(`/api/game/ktwizteamrank`);
         const data = res.data.data.ktWizTeamRank;
         setTeamRank({
           rank: data.rank,

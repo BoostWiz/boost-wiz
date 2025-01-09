@@ -18,9 +18,7 @@ export default function HighlightVideoCell({ index }: HighlightVideoCellProps) {
       const BASE_URL =
         process.env.NEXT_PUBLIC_API_URL || 'https://www.ktwiz.co.kr';
       try {
-        const res = await axios.get(
-          `${BASE_URL}/api/media/highlightlist?count=10`,
-        );
+        const res = await axios.get(`/api/media/highlightlist?count=10`);
 
         const data =
           res.data.data.list?.map(
