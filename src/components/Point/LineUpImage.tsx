@@ -3,6 +3,7 @@ import { player } from '@/interface/point';
 
 interface propsType {
   teamInfo: {
+    teamCode: string;
     teamName: string;
     teamLogo: string;
   };
@@ -13,7 +14,11 @@ const LineUpImage = ({ teamInfo, lineupInfo }: propsType) => {
   return (
     <div className={`${flexColumnCenter} w-full`}>
       <div className={`${flexRowCenter} pr-4`}>
-        <img src={teamInfo.teamLogo} alt="logo" className="w-20 h-20" />
+        <img
+          src={`/images/logo/${teamInfo.teamCode}.png`}
+          alt="logo"
+          className="w-20 h-20"
+        />
         <p className="text-xl">{teamInfo.teamName} 라인업</p>
       </div>
       <div className="relative">
