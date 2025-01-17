@@ -5,10 +5,12 @@ import { player } from '@/interface/point';
 
 interface propsType {
   homeInfo: {
+    teamCode: string;
     teamName: string;
     teamLogo: string;
   };
   visitInfo: {
+    teamCode: string;
     teamName: string;
     teamLogo: string;
   };

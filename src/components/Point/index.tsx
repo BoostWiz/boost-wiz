@@ -38,10 +38,12 @@ const Point = ({ pointData, setGameData }: propsType) => {
         />
         <LineUp
           homeInfo={{
+            teamCode: pointData.gameScore.homeKey,
             teamName: pointData.gameScore.home,
             teamLogo: pointData.gameScore.homeLogo,
           }}
           visitInfo={{
+            teamCode: pointData.gameScore.visitKey,
             teamName: pointData.gameScore.visit,
             teamLogo: pointData.gameScore.visitLogo,
           }}
